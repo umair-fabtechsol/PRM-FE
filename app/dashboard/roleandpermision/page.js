@@ -1,16 +1,25 @@
 "use client";
 
-import PrivateRoute from "../components/PrivateRoute";
-import Header from "../components/Header";
+import PrivateRoute from "../../components/PrivateRoute";
+import Header from "../../components/Header";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 
-export default function CustomersPage() {
+export default function RolesAndPermissionsPage() {
+  const dummyData = [
+    { text: "edit" },
+    { text: "delete" },
+    { text: "create" },
+    { text: "new" },
+    { text: "add" },
+    { text: "read" },
+    { text: "own" },
+  ];
   return (
     <PrivateRoute>
       <Header
-        title="Customers Management"
-        description="manage customer profiles , interactions and insights to strngth than to relationship"
+        title="Role & Permissions"
+        description="manage team roles and permissions to control access and ensure secure efficient collaboration"
       />
       <div className="p-6 min-h-screen">
         <div className="flex items-center justify-between  pb-4">
@@ -29,16 +38,7 @@ export default function CustomersPage() {
           </div>
 
           <div className="flex space-x-4">
-            <button className="flex items-center text-sm px-4 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
-              <img
-                src="/icons/import.png"
-                alt="Custom Icon"
-                className="w-4 h-4 mr-2"
-              />
-              Export
-            </button>
-
-            <Link href="/addcustomer">
+            <Link href="#">
               <button className="flex text-sm items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
                 <FaPlus className="mr-2 text-sm" />
                 Add New
@@ -53,19 +53,13 @@ export default function CustomersPage() {
             <thead className="bg-white border-b">
               <tr>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Customer Name
+                  Role title
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Email Address
+                  Permissions
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Phone
-                </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Tag
-                </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Plan
+                  Created Date
                 </th>
 
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
@@ -82,53 +76,30 @@ export default function CustomersPage() {
                   } hover:bg-gray-100`}
                 >
                   <td className="px-4 py-3 flex items-center space-x-2">
-                    <img
-                      src="/images/image.jpg"
-                      alt="User"
-                      className="w-8 h-8 rounded-full"
-                    />
-                    <div className="flex flex-col ml-2">
-                      <span className="text-black text-sm font-medium">
-                        John Doe
-                      </span>
-                      <span className="text-gray-500 text-xs">User Title</span>
+                    <span className="text-black text-sm font-medium">
+                      John Doe
+                    </span>
+                  </td>
+
+                  <td className="px-4 py-3 text-gray-700 text-sm">
+                    <div className="flex flex-wrap gap-1">
+                      {dummyData.map((item, index) => (
+                        <span
+                          key={index}
+                          className="border border-gray-300 text-gray-700 text-xs px-1 rounded"
+                        >
+                          {item.text}
+                        </span>
+                      ))}
                     </div>
                   </td>
 
                   <td className="px-4 py-3 text-gray-700 text-sm">
-                    johndoe@example.com
+                    dec, 07 2024 9:32pm
                   </td>
-                  <td className="px-4 py-3 text-gray-700 text-sm">
-                    +1234567890
-                  </td>
-
-                  <td className="px-4 py-3 text-gray-700 text-sm">
-                    <span
-                      className={`${
-                        {
-                          0: "text-xs rounded-xl bg-red-300 text-red-700 px-3 py-1",
-                          1: "text-xs rounded-xl bg-blue-300 text-blue-700 px-3 py-1",
-                          2: "text-xs rounded-xl bg-green-300 text-green-700 px-3 py-1",
-                        }[index % 3]
-                      } rounded text-sm`}
-                    >
-                      {index % 3 === 0
-                        ? "tag"
-                        : index % 3 === 1
-                        ? "tag"
-                        : "tag"}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-gray-700 text-sm">sub-plan</td>
 
                   <td className="px-4 py-3 space-x-2">
-                    <button className="text-gray-700 hover:text-blue-700">
-                      <img
-                        src="/icons/usericon.png"
-                        alt="Custom Icon"
-                        className="w-4 h-4 mr-2"
-                      />
-                    </button>
+                    <button className="text-gray-700 hover:text-blue-700"></button>
                     <button className="text-gray-700 hover:text-blue-700">
                       <img
                         src="/icons/delete.png"

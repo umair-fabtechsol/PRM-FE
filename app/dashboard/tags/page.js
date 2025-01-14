@@ -1,25 +1,16 @@
 "use client";
 
-import PrivateRoute from "../components/PrivateRoute";
-import Header from "../components/Header";
+import PrivateRoute from "../../components/PrivateRoute";
+import Header from "../../components/Header";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 
-export default function RolesAndPermissionsPage() {
-  const dummyData = [
-    { text: "edit" },
-    { text: "delete" },
-    { text: "create" },
-    { text: "new" },
-    { text: "add" },
-    { text: "read" },
-    { text: "own" },
-  ];
+export default function TagsPage() {
   return (
     <PrivateRoute>
       <Header
-        title="Role & Permissions"
-        description="manage team roles and permissions to control access and ensure secure efficient collaboration"
+        title="Tags Management"
+        description="add, edit, and orgnized to streamline management"
       />
       <div className="p-6 min-h-screen">
         <div className="flex items-center justify-between  pb-4">
@@ -53,13 +44,13 @@ export default function RolesAndPermissionsPage() {
             <thead className="bg-white border-b">
               <tr>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Role title
+                  Tag Name
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Permissions
+                  description
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Created Date
+                  Color
                 </th>
 
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
@@ -82,20 +73,25 @@ export default function RolesAndPermissionsPage() {
                   </td>
 
                   <td className="px-4 py-3 text-gray-700 text-sm">
-                    <div className="flex flex-wrap gap-1">
-                      {dummyData.map((item, index) => (
-                        <span
-                          key={index}
-                          className="border border-gray-300 text-gray-700 text-xs px-1 rounded"
-                        >
-                          {item.text}
-                        </span>
-                      ))}
-                    </div>
+                    this is for the description part of this
                   </td>
-
-                  <td className="px-4 py-3 text-gray-700 text-sm">
-                    dec, 07 2024 9:32pm
+                  <td className="px-4 py-3 text-gray-700 text-sm flex items-center space-x-2">
+                    <div
+                      className={`${
+                        {
+                          0: " w-8 h-8 rounded-full bg-red-300",
+                          1: " w-8 h-8 rounded-full bg-blue-300",
+                          2: " w-8 h-8 rounded-full bg-green-300",
+                        }[index % 3]
+                      }`}
+                    ></div>
+                    <span className="px-4">
+                      {index % 3 === 0
+                        ? "for team"
+                        : index % 3 === 1
+                        ? "for plan"
+                        : "for look"}
+                    </span>
                   </td>
 
                   <td className="px-4 py-3 space-x-2">
