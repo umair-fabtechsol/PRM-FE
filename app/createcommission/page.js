@@ -53,7 +53,7 @@ export default function CreateCommissionPage() {
                 id="commissionType"
                 className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
               >
-                <option value="">Select Type</option>
+                <option value="">Select</option>
                 <option value="type1">Type 1</option>
                 <option value="type2">Type 2</option>
                 <option value="type3">Type 3</option>
@@ -71,7 +71,7 @@ export default function CreateCommissionPage() {
                 id="commissionContinuity"
                 className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
               >
-                <option value="">Select Continuity</option>
+                <option value="">Select </option>
                 <option value="continuity1">Continuity 1</option>
                 <option value="continuity2">Continuity 2</option>
                 <option value="continuity3">Continuity 3</option>
@@ -126,7 +126,7 @@ export default function CreateCommissionPage() {
                 id="tierPayout"
                 className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
               >
-                <option value="">Select Frequency</option>
+                <option value="">Select </option>
                 <option value="monthly">Monthly</option>
                 <option value="quarterly">Quarterly</option>
                 <option value="annually">Annually</option>
@@ -144,7 +144,7 @@ export default function CreateCommissionPage() {
                 id="secondTierPayout"
                 className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
               >
-                <option value="">Select Frequency</option>
+                <option value="">Select</option>
                 <option value="monthly">Monthly</option>
                 <option value="quarterly">Quarterly</option>
                 <option value="annually">Annually</option>
@@ -159,7 +159,7 @@ export default function CreateCommissionPage() {
                 id="referralPayout"
                 className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
               >
-                <option value="">Select Frequency</option>
+                <option value="">Select</option>
                 <option value="monthly">Monthly</option>
                 <option value="quarterly">Quarterly</option>
                 <option value="annually">Annually</option>
@@ -167,7 +167,75 @@ export default function CreateCommissionPage() {
             </div>
           </div>
 
-          <div></div>
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            <div className="flex flex-col">
+              <label htmlFor="commissionType" className="text-gray-700 text-sm">
+                Discount Type
+              </label>
+              <select
+                id="commissionType"
+                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+              >
+                <option value="">Select </option>
+                <option value="type1">Type 1</option>
+                <option value="type2">Type 2</option>
+                <option value="type3">Type 3</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            <div className="flex flex-col">
+              <label htmlFor="input1" className="text-gray-700 text-sm">
+                First Tier Dicount
+              </label>
+              <input
+                id="input1"
+                type="text"
+                placeholder="Enter"
+                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+              />
+            </div>{" "}
+            <div className="flex flex-col">
+              <label htmlFor="input1" className="text-gray-700 text-sm">
+                Second Tier Discount
+              </label>
+              <input
+                id="input1"
+                type="text"
+                placeholder="Enter"
+                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            <div className="flex flex-col">
+              <label htmlFor="commissionType" className="text-gray-700 text-sm">
+                payment processor
+              </label>
+              <select
+                id="commissionType"
+                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+              >
+                <option value="">Select</option>
+                <option value="type1">Type 1</option>
+                <option value="type2">Type 2</option>
+                <option value="type3">Type 3</option>
+              </select>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="input1" className="text-gray-700 text-sm">
+                minimum threasholds
+              </label>
+              <input
+                id="input1"
+                type="text"
+                placeholder="20%"
+                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+              />
+            </div>
+          </div>
 
           <div className="sm:col-span-2 flex justify-end space-x-4 mt-6">
             <button
