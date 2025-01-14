@@ -1,7 +1,7 @@
 "use client";
 
-import PrivateRoute from "../components/PrivateRoute";
-import Header from "../components/Header";
+import PrivateRoute from "../../components/PrivateRoute";
+import Header from "../../components/Header.js";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 
@@ -47,7 +47,7 @@ export default function PartnerPage() {
               Import
             </button>
 
-            <Link href="/addpartner">
+            <Link href="/dashboard/addpartner">
               <button className="flex text-sm items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
                 <FaPlus className="mr-2 text-sm" />
                 Add New

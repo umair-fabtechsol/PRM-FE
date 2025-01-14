@@ -1,7 +1,7 @@
 "use client";
 
-import PrivateRoute from "../components/PrivateRoute";
-import Header from "../components/Header";
+import PrivateRoute from "../../components/PrivateRoute";
+import Header from "../../components/Header";
 import { FaArrowLeft, FaUser, FaUpload, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 
@@ -24,10 +24,10 @@ export default function AddTeamMember() {
         title={
           <span className="flex items-center text-gray-700">
             <FaArrowLeft className="mr-2 text-gray-700 capitalize" size={20} />{" "}
-            Add New Team member
+            Add New Customer
           </span>
         }
-        description="Add new team member and define their role for effective collaboration"
+        description="Add a team member and define their role for effective collaboration"
       />
       <div className="container mx-auto p-4">
         <form>
@@ -84,15 +84,26 @@ export default function AddTeamMember() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-4 mt-4">
             <div className="flex flex-col">
               <label htmlFor="firstName" className="text-gray-700 text-sm">
-                Name
+                First Name
               </label>
               <input
                 id="firstName"
                 type="text"
                 placeholder="First Name"
+                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="firstName" className="text-gray-700 text-sm">
+                Last Name
+              </label>
+              <input
+                id="firstName"
+                type="text"
+                placeholder="Last Name"
                 className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
               />
             </div>
@@ -111,39 +122,8 @@ export default function AddTeamMember() {
                 <FaUser className="text-gray-600 ml-2" size={16} />
               </div>
             </div>
-
-            <div className="flex flex-col">
-              <label htmlFor="tag" className="text-gray-700 text-sm">
-                Tag
-              </label>
-              <select
-                id="tag"
-                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
-              >
-                <option value="">Select Tag</option>
-                <option value="tag1">Tag 1</option>
-                <option value="tag2">Tag 2</option>
-                <option value="tag3">Tag 3</option>
-                <option value="tag4">Tag 4</option>
-              </select>
-            </div>
-
-            <div className="flex flex-col">
-              <label htmlFor="role" className="text-gray-700 text-sm">
-                Role
-              </label>
-              <select
-                id="role"
-                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
-              >
-                <option value="">Select Role</option>
-                <option value="role1">Role 1</option>
-                <option value="role2">Role 2</option>
-                <option value="role3">Role 3</option>
-                <option value="role4">Role 4</option>
-              </select>
-            </div>
-
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
             <div className="flex flex-col">
               <label htmlFor="email" className="text-gray-700 text-sm">
                 Email
@@ -166,6 +146,38 @@ export default function AddTeamMember() {
                 placeholder="Phone"
                 className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
               />
+            </div>
+
+            <div className="flex flex-col">
+              <label htmlFor="tag" className="text-gray-700 text-sm">
+                Tag
+              </label>
+              <select
+                id="tag"
+                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+              >
+                <option value="">Select</option>
+                <option value="tag1">Tag 1</option>
+                <option value="tag2">Tag 2</option>
+                <option value="tag3">Tag 3</option>
+                <option value="tag4">Tag 4</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col">
+              <label htmlFor="role" className="text-gray-700 text-sm">
+                Plan
+              </label>
+              <select
+                id="role"
+                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+              >
+                <option value="">Select</option>
+                <option value="role1">Role 1</option>
+                <option value="role2">Role 2</option>
+                <option value="role3">Role 3</option>
+                <option value="role4">Role 4</option>
+              </select>
             </div>
           </div>
           <div className="sm:col-span-2 flex justify-end space-x-4 mt-6">

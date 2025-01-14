@@ -1,7 +1,7 @@
 "use client";
 
-import PrivateRoute from "../components/PrivateRoute";
-import Header from "../components/Header";
+import PrivateRoute from "../../components/PrivateRoute";
+import Header from "../../components/Header";
 import { FaAppStore, FaUser, FaArrowUp, FaDollarSign } from "react-icons/fa";
 
 export default function ReportAndAnlyticsPage() {

@@ -1,16 +1,16 @@
 "use client";
 
-import PrivateRoute from "../components/PrivateRoute";
-import Header from "../components/Header";
+import PrivateRoute from "../../components/PrivateRoute";
+import Header from "../../components/Header";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 
-export default function TagsPage() {
+export default function TeamMemberPage() {
   return (
     <PrivateRoute>
       <Header
-        title="Tags Management"
-        description="add, edit, and orgnized to streamline management"
+        title="Team Management"
+        description="manage system administrator and their permissions"
       />
       <div className="p-6 min-h-screen">
         <div className="flex items-center justify-between  pb-4">
@@ -29,7 +29,16 @@ export default function TagsPage() {
           </div>
 
           <div className="flex space-x-4">
-            <Link href="#">
+            <button className="flex items-center text-sm px-4 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
+              <img
+                src="/icons/import.png"
+                alt="Custom Icon"
+                className="w-4 h-4 mr-2"
+              />
+              Export
+            </button>
+
+            <Link href="/dashboard/addteammember">
               <button className="flex text-sm items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
                 <FaPlus className="mr-2 text-sm" />
                 Add New
@@ -44,15 +53,21 @@ export default function TagsPage() {
             <thead className="bg-white border-b">
               <tr>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Tag Name
+                  Member Name
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  description
+                  Email address
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Color
+                  Phone
+                </th>
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  Tag
                 </th>
 
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  Role
+                </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
                   Actions
                 </th>
@@ -67,42 +82,59 @@ export default function TagsPage() {
                   } hover:bg-gray-100`}
                 >
                   <td className="px-4 py-3 flex items-center space-x-2">
-                    <span className="text-black text-sm font-medium">
-                      John Doe
-                    </span>
+                    <img
+                      src="/images/image.jpg"
+                      alt="User"
+                      className="w-8 h-8 rounded-full"
+                    />
+                    <div className="flex flex-col ml-2">
+                      <span className="text-black text-sm font-medium">
+                        John Doe for name part of user
+                      </span>
+                      <span className="text-gray-500 text-xs">User Title</span>
+                    </div>
                   </td>
 
                   <td className="px-4 py-3 text-gray-700 text-sm">
-                    this is for the description part of this
+                    johndoe@example.com
                   </td>
-                  <td className="px-4 py-3 text-gray-700 text-sm flex items-center space-x-2">
-                    <div
-                      className={`${
-                        {
-                          0: " w-8 h-8 rounded-full bg-red-300",
-                          1: " w-8 h-8 rounded-full bg-blue-300",
-                          2: " w-8 h-8 rounded-full bg-green-300",
-                        }[index % 3]
-                      }`}
-                    ></div>
-                    <span className="px-4">
-                      {index % 3 === 0
-                        ? "for team"
-                        : index % 3 === 1
-                        ? "for plan"
-                        : "for look"}
-                    </span>
+                  <td className="px-4 py-3 text-gray-700 text-sm">
+                    +1234567890
                   </td>
 
+                  <td className="px-4 py-3 text-gray-700 text-sm">
+                    <span
+                      className={`${
+                        {
+                          0: "text-xs rounded-xl bg-red-300 text-red-700 p-1",
+                          1: "text-xs rounded-xl bg-blue-300 text-blue-700 p-1",
+                          2: "text-xs rounded-xl bg-green-300 text-green-700 p-1",
+                        }[index % 3]
+                      } rounded text-sm`}
+                    >
+                      {index % 3 === 0
+                        ? "tag text"
+                        : index % 3 === 1
+                        ? "tag text"
+                        : "tag text"}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-gray-700 text-sm">admin</td>
                   <td className="px-4 py-3 space-x-2">
-                    <button className="text-gray-700 hover:text-blue-700"></button>
+                    <button className="text-gray-700 hover:text-blue-700">
+                      <img
+                        src="/icons/usericon.png"
+                        alt="Custom Icon"
+                        className="w-4 h-4 mr-2"
+                      />
+                    </button>
                     <button className="text-gray-700 hover:text-blue-700">
                       <img
                         src="/icons/delete.png"
                         alt="Custom Icon"
                         className="w-4 h-4 mr-2"
                       />
-                    </button>
+                    </button>{" "}
                     <button className="text-gray-700 hover:text-blue-700">
                       <img
                         src="/icons/edit.png"
