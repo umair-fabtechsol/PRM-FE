@@ -29,7 +29,7 @@ const Sidebar = () => {
     { name: "Campaign", icon: <FaBullhorn />, path: "/campaigns" },
     { name: "Team Members", icon: <FaUserFriends />, path: "/teammember" },
     { name: "Customers", icon: <FaUserCircle />, path: "/createpassword" },
-    { name: "Tags", icon: <FaTag />, path: "/passwordreset" },
+    { name: "Tags", icon: <FaTag />, path: "/tags" },
     { name: "Calendar", icon: <FaCalendarAlt />, path: "/calendar" },
     {
       name: "Report & Analytics",
