@@ -12,7 +12,7 @@ export default {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        Inter: ["Inter"]
+        Inter: ['Inter']
       }
     },
   },

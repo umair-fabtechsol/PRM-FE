@@ -42,3 +42,37 @@ export const TableinDashboardPageData = [
       "Status": "Active"
     }
   ]
+
+
+  export const AuditLogTabsTData = [
+    {
+      "Name": "John Doe",
+      "SubscribePlan": "Helloasasdsd....",
+      "LicenceUsePercentage": 10,
+    },
+    {
+      "Name": "Jane Smith",
+      "SubscribePlan": "Helooosdasdasd...",
+      "LicenceUsePercentage": 50,
+    },
+    {
+      "Name": "Michael Johnson",
+      "SubscribePlan": "sdkjaskdjaskdj...",
+      "LicenceUsePercentage": 60,
+    },
+    {
+      "Name": "Emily Davis",
+      "SubscribePlan": "Helloasasdsd....",
+      "LicenceUsePercentage": 90,
+    },
+    {
+      "Name": "David Wilson",
+      "SubscribePlan": "Helooosdasdasd...",
+      "LicenceUsePercentage": 30,
+    },
+    {
+      "Name": "Sophia Martinez",
+      "SubscribePlan": "sdkjaskdjaskdj...",
+      "LicenceUsePercentage": 70,
+    }
+  ]

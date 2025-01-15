@@ -30,7 +30,7 @@ const Sidebar = () => {
     { name: "Team Members", icon: <FaUserFriends />, path: "/teammember" },
     { name: "Customers", icon: <FaUserCircle />, path: "/createpassword" },
     { name: "Tags", icon: <FaTag />, path: "/tags" },
-    { name: "Calendar", icon: <FaCalendarAlt />, path: "/calendar" },
+    { name: "Calendar", icon: <FaCalendarAlt />, path: "/calender" },
     {
       name: "Report & Analytics",
       icon: <FaChartLine />,

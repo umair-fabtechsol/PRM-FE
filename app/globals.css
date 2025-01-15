@@ -19,5 +19,37 @@
 body {
   color: var(--foreground);
   background: #fafafa;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Customizing the time slot labels */
+.fc-timegrid-slot-label {
+  font-family: 'Arial', sans-serif;
+  /* Custom font */
+  font-size: 14px;
+  /* Font size */
+  color: #333;
+  /* Text color */
+  padding-left: 10px;
+  /* Left padding */
+}
+
+/* Customizing the time slots background */
+/* .fc-timegrid-slot {
+  background-color:  #f0f0f0; /* Background color */
+/* border-left: 2px solid #ccc; Left border color */
+/* } */
+
+/* Customizing specific hour range */
+.fc-timegrid-slot-label {
+  font-family: "Inter";
+  color: #71717A;
+  font-size: 15px;
+}
+
+
+
+/* Increase the height of each time slot (row) */
+.fc-timegrid-slot {
+  height: 50px !important; /* Customize this to your preferred height */
 }

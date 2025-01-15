@@ -24,7 +24,7 @@ const page = () => {
                     </div>
                     <button className="text-gray-500">Clear All</button>
                 </div>
-                <div className="space-y-4">
+                <div classN1ame="space-y-4">
                     {notifications.map(notification => (
                         <div key={notification.id} className="flex justify-between items-start border-b-2 p-4 ">
                             <div className="flex items-start space-x-2">
@@ -35,8 +35,8 @@ const page = () => {
                                 </div>
                             </div>
                             <button className="text-gray-500"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 3L13 13" stroke="#4A4A4A" stroke-width="1.5" />
-                                <path d="M13 3L3 13" stroke="#4A4A4A" stroke-width="1.5" />
+                                <path d="M3 3L13 13" stroke="#4A4A4A" strokeWidth="1.5" />
+                                <path d="M13 3L3 13" stroke="#4A4A4A" strokeWidth="1.5" />
                             </svg>
                             </button>
                         </div>
