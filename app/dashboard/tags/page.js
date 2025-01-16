@@ -1,17 +1,12 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 
 export default function TagsPage() {
   return (
     <PrivateRoute>
-      <Header
-        title="Tags Management"
-        description="add, edit, and orgnized to streamline management"
-      />
       <div className="p-6 min-h-screen">
         <div className="flex items-center justify-between  pb-4">
           <div className="flex items-center border border-gray-300 rounded px-2 py-1 w-full max-w-sm bg-white">
@@ -39,21 +34,21 @@ export default function TagsPage() {
         </div>
 
         {/* Table Section */}
-        <div className="mt-6">
+        <div className="mt-5 overflow-x-auto">
           <table className="w-full rounded-md border-collapse border rounded shadow-md">
             <thead className="bg-white border-b">
               <tr>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Tag Name
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   description
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Color
                 </th>
 
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Actions
                 </th>
               </tr>
@@ -66,22 +61,20 @@ export default function TagsPage() {
                     index % 2 === 0 ? "bg-white" : "bg-gray-50"
                   } hover:bg-gray-100`}
                 >
-                  <td className="px-4 py-3 flex items-center space-x-2">
-                    <span className="text-black text-sm font-medium">
-                      John Doe
-                    </span>
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
+                    John Doe
                   </td>
 
-                  <td className="px-4 py-3 text-gray-700 text-sm">
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                     this is for the description part of this
                   </td>
-                  <td className="px-4 py-3 text-gray-700 text-sm flex items-center space-x-2">
+                  <td className="px-4 py-3 text-gray-700 text-sm flex items-center space-x-2 whitespace-nowrap">
                     <div
                       className={`${
                         {
-                          0: " w-8 h-8 rounded-full bg-red-300",
-                          1: " w-8 h-8 rounded-full bg-blue-300",
-                          2: " w-8 h-8 rounded-full bg-green-300",
+                          0: " w-8 h-8 rounded-full bg-gray-700",
+                          1: " w-8 h-8 rounded-full bg-blue-700",
+                          2: " w-8 h-8 rounded-full bg-green-700",
                         }[index % 3]
                       }`}
                     ></div>
@@ -94,13 +87,13 @@ export default function TagsPage() {
                     </span>
                   </td>
 
-                  <td className="px-4 py-3 space-x-2">
-                    <button className="text-gray-700 hover:text-blue-700"></button>
+                  <td className="px-4 py-3 space-x-2 whitespace-nowrap">
                     <button className="text-gray-700 hover:text-blue-700">
                       <img
                         src="/icons/delete.png"
                         alt="Custom Icon"
                         className="w-4 h-4 mr-2"
+                        style={{ maxWidth: "unset" }}
                       />
                     </button>
                     <button className="text-gray-700 hover:text-blue-700">
@@ -108,6 +101,7 @@ export default function TagsPage() {
                         src="/icons/edit.png"
                         alt="Custom Icon"
                         className="w-4 h-4 mr-2"
+                        style={{ maxWidth: "unset" }}
                       />
                     </button>
                   </td>

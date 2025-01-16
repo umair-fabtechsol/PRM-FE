@@ -1,8 +1,7 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header";
-import { FaArrowLeft, FaUser, FaUpload, FaTrash } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 
 export default function AddTeamMember() {
@@ -20,16 +19,7 @@ export default function AddTeamMember() {
   };
   return (
     <PrivateRoute>
-      <Header
-        title={
-          <span className="flex items-center text-gray-700">
-            <FaArrowLeft className="mr-2 text-gray-700 capitalize" size={20} />{" "}
-            Add New Team member
-          </span>
-        }
-        description="Add new team member and define their role for effective collaboration"
-      />
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto lg:p-4 p-2">
         <form>
           {" "}
           <div className="flex flex-col my-3">

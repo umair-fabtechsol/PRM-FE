@@ -1,22 +1,12 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header";
-import { FaArrowLeft, FaAppStore, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 export default function DashboardPage() {
   return (
     <PrivateRoute>
-      <Header
-        title={
-          <span className="flex items-center text-gray-700">
-            <FaArrowLeft className="mr-2 text-gray-700" size={20} /> Add New
-            Partner
-          </span>
-        }
-        description="Add new partner for seemless managment"
-      />
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto lg:p-4 p-2">
         <form className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="flex flex-col">
             <label htmlFor="firstName" className="text-gray-700 text-sm">
@@ -132,7 +122,7 @@ export default function DashboardPage() {
               <option value="role4">Role 4</option>
             </select>
           </div>
-          <div className="sm:col-span-2 flex justify-end space-x-4 mt-auto">
+          <div className="sm:col-span-2 flex justify-end space-x-4 my-6">
             <button
               type="button"
               className="w-36 px-6 py-2 bg-white text-gray-700 border border-gray-300 rounded-md shadow-md hover:shadow-lg hover:bg-gray-100 transition"

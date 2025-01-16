@@ -1,35 +1,30 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header.js";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 
 export default function PartnerPage() {
   return (
     <PrivateRoute>
-      <Header
-        title="Partners Management"
-        description="View, manage and analyze partner performance"
-      />
-      <div className="p-6 min-h-screen">
+      <div className="py-4 lg:px-6 px-3 min-h-screen">
         <div className="flex items-center justify-between  pb-4">
-          <div className="flex items-center border border-gray-300 rounded px-2 py-1 w-full max-w-sm bg-white">
-            <FaSearch className="text-black mr-2" />
+          <div className="flex items-center border border-gray-300 rounded px-2 py-2 w-full max-w-sm bg-white md:max-w-xs lg:max-w-sm">
+            <FaSearch className="text-gray-500 mr-2 text-base md:text-sm" />
             <input
               type="text"
               placeholder="Search"
-              className="flex-1 outline-none bg-white"
+              className="flex-1 outline-none bg-white text-gray-700 text-base md:text-sm"
             />
             <img
               src="/icons/union.png"
               alt="Custom Icon"
-              className="w-4 h-4 ml-2"
+              className="w-5 h-5 ml-2 md:w-4 md:h-4"
             />
           </div>
 
-          <div className="flex space-x-4">
-            <button className="flex items-center text-sm px-4 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
+          <div className="flex space-x-2 lg:space-x-4">
+            <button className="flex items-center text-sm lg:px-4 px-3 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
               <img
                 src="/icons/import.png"
                 alt="Custom Icon"
@@ -38,7 +33,7 @@ export default function PartnerPage() {
               Export
             </button>
 
-            <button className="flex items-center text-sm px-4 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
+            <button className="flex items-center text-sm lg:px-4 px-3 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
               <img
                 src="/icons/export.png"
                 alt="Custom Icon"
@@ -48,7 +43,7 @@ export default function PartnerPage() {
             </button>
 
             <Link href="/dashboard/addpartner">
-              <button className="flex text-sm items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+              <button className="flex text-sm items-center lg:px-4 px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
                 <FaPlus className="mr-2 text-sm" />
                 Add New
               </button>
@@ -57,29 +52,29 @@ export default function PartnerPage() {
         </div>
 
         {/* Table Section */}
-        <div className="mt-6">
-          <table className="w-full rounded-md border-collapse border rounded shadow-md">
+        <div className="overflow-x-auto mt-5">
+          <table className="min-w-full rounded-md border-collapse border rounded shadow-md">
             <thead className="bg-white border-b">
               <tr>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Name
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Email
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Phone
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Company
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Type
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Tags
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Actions
                 </th>
               </tr>
@@ -92,11 +87,12 @@ export default function PartnerPage() {
                     index % 2 === 0 ? "bg-white" : "bg-gray-50"
                   } hover:bg-gray-100`}
                 >
-                  <td className="px-4 py-3 flex items-center space-x-2">
+                  <td className="px-4 py-3 flex items-center space-x-2 whitespace-nowrap">
                     <img
                       src="/images/image.jpg"
                       alt="User"
                       className="w-8 h-8 rounded-full"
+                      style={{ maxWidth: "unset" }}
                     />
                     <div className="flex flex-col ml-2">
                       <span className="text-black text-sm font-medium">
@@ -106,23 +102,25 @@ export default function PartnerPage() {
                     </div>
                   </td>
 
-                  <td className="px-4 py-3 text-gray-700 text-sm">
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                     johndoe@example.com
                   </td>
-                  <td className="px-4 py-3 text-gray-700 text-sm">
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                     +1234567890
                   </td>
-                  <td className="px-4 py-3 text-gray-700 text-sm">
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                     Tech Company
                   </td>
-                  <td className="px-4 py-3 text-gray-700 text-sm">Partner</td>
-                  <td className="px-4 py-3 text-gray-700 text-sm">
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
+                    Partner
+                  </td>
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                     <span
                       className={`${
                         {
-                          0: "text-xs rounded-xl bg-red-300 text-red-700 p-1",
-                          1: "text-xs rounded-xl bg-blue-300 text-blue-700 p-1",
-                          2: "text-xs rounded-xl bg-green-300 text-green-700 p-1",
+                          0: "text-xs rounded-xl bg-red-100 text-red-500 px-2 py-1",
+                          1: "text-xs rounded-xl bg-blue-100 text-blue-500 px-2 py-1",
+                          2: "text-xs rounded-xl bg-green-100 text-green-500 px-2 py-1",
                         }[index % 3]
                       } rounded text-sm`}
                     >
@@ -134,7 +132,7 @@ export default function PartnerPage() {
                     </span>
                   </td>
 
-                  <td className="px-4 py-3 space-x-2">
+                  <td className="px-4 py-3 space-x-2 whitespace-nowrap">
                     <button className="text-gray-700 hover:text-blue-700">
                       <img
                         src="/icons/usericon.png"

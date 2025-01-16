@@ -62,7 +62,7 @@ const Sidebar = () => {
 
   return (
     <PrivateRoute>
-      <div className="flex flex-col h-full p-2 ">
+      <div className="flex bg-white flex-col border-r h-full p-2 ">
         <div className="text-xl text-blue-500 font-bold mb-6">Logo</div>
 
         <ul
@@ -75,7 +75,7 @@ const Sidebar = () => {
           {links.map((link) => (
             <li
               key={link.name}
-              className={`flex items-center p-3 mb-4 rounded-lg cursor-pointer 
+              className={`flex items-center p-3 mb-4 rounded-lg cursor-pointer
               ${active === link.name ? "bg-blue-500 text-white" : ""}`}
               onClick={() => setActive(link.name)}
             >

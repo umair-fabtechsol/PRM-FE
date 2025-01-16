@@ -1,13 +1,12 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header";
 import { FaSearch, FaPlus, FaArrowUp } from "react-icons/fa";
 import Link from "next/link";
 
 export default function CampiagnsPage() {
   const users = [
-    { id: 1, name: "User 1", image: "https://via.placeholder.com/50" },
+    // { id: 1, name: "User 1", image: "https://via.placeholder.com/50" },
     { id: 2, name: "User 2", image: "https://via.placeholder.com/50" },
     { id: 3, name: "User 3", image: "https://via.placeholder.com/50" },
     { id: 4, name: "User 4", image: "https://via.placeholder.com/50" },
@@ -19,23 +18,19 @@ export default function CampiagnsPage() {
     { id: 10, name: "User 10", image: "https://via.placeholder.com/50" },
   ];
 
-  const maxVisible = 5; // Maximum number of images to show
+  const maxVisible = 5;
   const remainingUsersCount = users.length - maxVisible;
   return (
     <PrivateRoute>
-      <Header
-        title="Campaigns Management"
-        description="createm, monitor and optimize your campiagns for maximum impect."
-      />
-      <div className="p-6 min-h-screen bg-transparent">
-        <div className="py-6 min-h-screen">
+      <div className="py-4 lg:px-6 px-3 min-h-screen bg-transparent">
+        <div className="py-3 min-h-screen">
           <div className="flex items-center justify-between  pb-4">
             <div className="flex items-center border border-gray-300 rounded px-2 py-1 w-full max-w-sm bg-white">
-              <FaSearch className="text-black mr-2" />
+              <FaSearch className="text-gray-700 mr-2" />
               <input
                 type="text"
                 placeholder="Search"
-                className="flex-1 outline-none bg-white"
+                className="flex-1 outline-none bg-white text-gray-700"
               />
               <img
                 src="/icons/union.png"
@@ -45,7 +40,7 @@ export default function CampiagnsPage() {
             </div>
 
             <div className="flex space-x-4">
-              <button className="flex items-center text-sm px-4 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
+              <button className="flex items-center text-sm lg:px-4 px-3  py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
                 <img
                   src="/icons/import.png"
                   alt="Custom Icon"
@@ -54,8 +49,8 @@ export default function CampiagnsPage() {
                 Export
               </button>
 
-              <Link href="/dashboard/addpartner">
-                <button className="flex text-sm items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+              <Link href="/dashboard/creatcompaign">
+                <button className="flex text-sm items-center lg:px-4 px-3   py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
                   <FaPlus className="mr-2 text-sm" />
                   create New
                 </button>
@@ -63,30 +58,30 @@ export default function CampiagnsPage() {
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="overflow-x-auto mt-5">
             <table className="w-full rounded-md border-collapse border rounded shadow-md">
               <thead className="bg-white border-b">
                 <tr>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     Campiagn Name
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     status
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     start date
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     end date
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     revenew generated
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     participations
                   </th>
 
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     Actions
                   </th>
                 </tr>
@@ -99,19 +94,19 @@ export default function CampiagnsPage() {
                       index % 2 === 0 ? "bg-white" : "bg-gray-50"
                     } hover:bg-gray-100`}
                   >
-                    <td className="px-4 py-3 text-gray-700 text-sm">
+                    <td className="px-4 py-3 text-gray-700 whitespace-nowrap text-sm">
                       for commission name
                     </td>
 
-                    <td className="px-4 py-3 text-gray-700 text-sm">
+                    <td className="px-4 py-3 text-gray-700 whitespace-nowrap text-sm">
                       <span
                         className={`${
                           {
-                            0: "text-xs rounded-xl bg-red-300 text-red-700 p-1",
-                            1: "text-xs rounded-xl bg-blue-300 text-blue-700 p-1",
-                            2: "text-xs rounded-xl bg-green-300 text-green-700 p-1",
+                            0: "text-xs rounded-xl bg-red-100 text-red-500 px-2 py-1",
+                            1: "text-xs rounded-xl bg-blue-100 text-blue-500 px-2 py-1",
+                            2: "text-xs rounded-xl bg-green-100 text-green-500 px-2 py-1",
                           }[index % 3]
-                        } rounded text-sm`}
+                        } rounded whitespace-nowrap text-sm`}
                       >
                         {index % 3 === 0
                           ? "ended"
@@ -120,37 +115,37 @@ export default function CampiagnsPage() {
                           : "active"}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-gray-700 text-sm">
+                    <td className="px-4 py-3 text-gray-700 whitespace-nowrap text-sm">
                       sep 30 , 2024
                     </td>
-                    <td className="px-4 py-3 text-gray-700 text-sm">
+                    <td className="px-4 py-3 text-gray-700 whitespace-nowrap text-sm">
                       sep 30 , 2024
                     </td>
-                    <td className="px-4 py-3 text-gray-700 text-sm">
+                    <td className="px-4 py-3 text-gray-700 whitespace-nowrap text-sm">
                       $123,4345.00
                     </td>
 
-                    <td className="px-4 py-2">
+                    <td className="pr-6 pl-2 whitespace-nowrap   py-2">
                       <div className="relative flex items-center">
                         {users.slice(0, maxVisible).map((user, index) => (
                           <img
                             key={user.id}
                             src="/images/image.jpg"
                             alt={user.name}
-                            className="w-6 h-6 rounded-full object-cover"
+                            className="w-7 h-7 rounded-full object-cover border-2 border-white"
                             style={{
                               position: "absolute",
-                              right: `${index * 16}px`, // Spacing between images
-                              zIndex: maxVisible - index, // Ensures the last image is on top
+                              right: `${index * 16}px`,
+                              zIndex: maxVisible - index,
                             }}
                           />
                         ))}
                         {remainingUsersCount > 0 && (
                           <div
-                            className="w-6 h-6 rounded-full bg-white border border-gray-300 text-green-500 flex items-center justify-center text-xs absolute"
+                            className="w-6 h-6 rounded-full bg-white border border-gray-300 text-green-500 flex items-center justify-center text-xs  absolute"
                             style={{
-                              left: `${maxVisible * 16 - 1}px`, // Position "+X" circle after images and overlap last image
-                              zIndex: maxVisible, // Ensures the +X badge overlaps the last image
+                              right: `-${16}px`,
+                              zIndex: maxVisible + 1,
                             }}
                             title={`+${remainingUsersCount} more`}
                           >
@@ -160,19 +155,23 @@ export default function CampiagnsPage() {
                       </div>
                     </td>
 
-                    <td className="px-4 py-3 space-x-2">
-                      <button className="text-gray-700 hover:text-blue-700">
-                        <img
-                          src="/icons/comicon.png"
-                          alt="Custom Icon"
-                          className="w-4 h-4 mr-2"
-                        />
-                      </button>
+                    <td className="px-4 py-3 space-x-2 whitespace-nowrap">
+                      <Link href="/dashboard/campaigndetail">
+                        <button className="text-gray-700 hover:text-blue-700">
+                          <img
+                            src="/icons/comicon.png"
+                            alt="Custom Icon"
+                            className="w-4 h-4 mr-2"
+                            style={{ maxWidth: "unset" }}
+                          />
+                        </button>
+                      </Link>
                       <button className="text-gray-700 hover:text-blue-700">
                         <img
                           src="/icons/delete.png"
                           alt="Custom Icon"
                           className="w-4 h-4 mr-2"
+                          style={{ maxWidth: "unset" }}
                         />
                       </button>
                       <button className="text-gray-700 hover:text-blue-700">
@@ -180,6 +179,7 @@ export default function CampiagnsPage() {
                           src="/icons/edit.png"
                           alt="Custom Icon"
                           className="w-4 h-4 mr-2"
+                          style={{ maxWidth: "unset" }}
                         />
                       </button>
                     </td>

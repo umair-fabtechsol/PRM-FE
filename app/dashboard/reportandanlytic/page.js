@@ -1,16 +1,11 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header";
 import { FaAppStore, FaUser, FaArrowUp, FaDollarSign } from "react-icons/fa";
 
 export default function ReportAndAnlyticsPage() {
   return (
     <PrivateRoute>
-      <Header
-        title="Report and analytics"
-        description="track performance analyze trends and export detailed reports"
-      />
       <div className="p-6 min-h-screen bg-transparent">
         <div className="mt-8 flex justify-end items-center space-x-2">
           <select className="text-sm pl-4 pr-8 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition focus:outline-none">

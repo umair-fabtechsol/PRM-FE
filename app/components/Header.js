@@ -4,12 +4,14 @@ import Image from "next/image";
 
 const Header = ({ title, description }) => {
   return (
-    <header className="w-full bg-transparent py-4 px-6 flex justify-between items-center">
+    <header className="w-full bg-transparent py-4 lg:px-6 px-3 flex justify-between items-center">
       <div className="text-left flex flex-col justify-center">
-        <h2 className="text-2xl font-semibold text-black mb-2 capitalize">
+        <h2 className="text-1xl lg:text-2xl font-semibold text-black mb-2 capitalize">
           {title}
         </h2>
-        <p className="text-base text-gray-700">{description}</p>
+        <p className="text-xs md:text-sm  lg:text-base text-gray-700">
+          {description}
+        </p>
       </div>
 
       <div className="flex space-x-4">
@@ -30,7 +32,7 @@ const Header = ({ title, description }) => {
             alt="User"
             width={40}
             height={40}
-            className="rounded-full"
+            className="rounded-full object-fit"
           />
         </button>
       </div>

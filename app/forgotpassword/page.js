@@ -84,7 +84,7 @@ export default function PasswordResetPage() {
               </span>
 
               <Link
-                href="/login"
+                href="/"
                 className="ml-1 text-blue-500 font-semibold hover:underline"
               >
                 Login

@@ -1,7 +1,6 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 
@@ -17,11 +16,7 @@ export default function RolesAndPermissionsPage() {
   ];
   return (
     <PrivateRoute>
-      <Header
-        title="Role & Permissions"
-        description="manage team roles and permissions to control access and ensure secure efficient collaboration"
-      />
-      <div className="p-6 min-h-screen">
+      <div className="py-4 lg:px-6 px-3 min-h-screen">
         <div className="flex items-center justify-between  pb-4">
           <div className="flex items-center border border-gray-300 rounded px-2 py-1 w-full max-w-sm bg-white">
             <FaSearch className="text-black mr-2" />
@@ -48,21 +43,21 @@ export default function RolesAndPermissionsPage() {
         </div>
 
         {/* Table Section */}
-        <div className="mt-6">
+        <div className="mt-5 overflow-x-auto">
           <table className="w-full rounded-md border-collapse border rounded shadow-md">
             <thead className="bg-white border-b">
               <tr>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Role title
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Permissions
                 </th>
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Created Date
                 </th>
 
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                   Actions
                 </th>
               </tr>
@@ -75,13 +70,11 @@ export default function RolesAndPermissionsPage() {
                     index % 2 === 0 ? "bg-white" : "bg-gray-50"
                   } hover:bg-gray-100`}
                 >
-                  <td className="px-4 py-3 flex items-center space-x-2">
-                    <span className="text-black text-sm font-medium">
-                      John Doe
-                    </span>
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
+                    John Doe
                   </td>
 
-                  <td className="px-4 py-3 text-gray-700 text-sm">
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                     <div className="flex flex-wrap gap-1">
                       {dummyData.map((item, index) => (
                         <span
@@ -94,17 +87,17 @@ export default function RolesAndPermissionsPage() {
                     </div>
                   </td>
 
-                  <td className="px-4 py-3 text-gray-700 text-sm">
+                  <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                     dec, 07 2024 9:32pm
                   </td>
 
-                  <td className="px-4 py-3 space-x-2">
-                    <button className="text-gray-700 hover:text-blue-700"></button>
+                  <td className="px-4 py-3 space-x-2 whitespace-nowrap">
                     <button className="text-gray-700 hover:text-blue-700">
                       <img
                         src="/icons/delete.png"
                         alt="Custom Icon"
                         className="w-4 h-4 mr-2"
+                        style={{ maxWidth: "unset" }}
                       />
                     </button>
                     <button className="text-gray-700 hover:text-blue-700">
@@ -112,6 +105,7 @@ export default function RolesAndPermissionsPage() {
                         src="/icons/edit.png"
                         alt="Custom Icon"
                         className="w-4 h-4 mr-2"
+                        style={{ maxWidth: "unset" }}
                       />
                     </button>
                   </td>

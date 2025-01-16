@@ -1,19 +1,14 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header";
 import { FaSearch, FaPlus, FaArrowUp } from "react-icons/fa";
 import Link from "next/link";
 
 export default function PayoutsPage() {
   return (
     <PrivateRoute>
-      <Header
-        title="Payouts Management"
-        description="confirgure permissions track payments and manage payouts schedules"
-      />
-      <div className="p-6 min-h-screen bg-transparent">
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="py-4 lg:px-6 px-3 min-h-screen bg-transparent">
+        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-md shadow-md flex flex-col justify-between h-full">
             <div>
               <div className="flex items-center">
@@ -101,27 +96,27 @@ export default function PayoutsPage() {
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-5 overflow-x-auto">
             <table className="w-full rounded-md border-collapse border rounded shadow-md">
               <thead className="bg-white border-b">
                 <tr>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     partner Name
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     payouts amount
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     scheduled date
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     payout frequency
                   </th>
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     payment processor
                   </th>
 
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
                     Actions
                   </th>
                 </tr>
@@ -134,23 +129,30 @@ export default function PayoutsPage() {
                       index % 2 === 0 ? "bg-white" : "bg-gray-50"
                     } hover:bg-gray-100`}
                   >
-                    <td className="px-4 py-3 text-gray-700 text-sm">
+                    <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                       for commission name
                     </td>
 
-                    <td className="px-4 py-3 text-gray-700 text-sm">
+                    <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
                       description
                     </td>
-                    <td className="px-4 py-3 text-gray-700 text-sm">Monthly</td>
-                    <td className="px-4 py-3 text-gray-700 text-sm">stripe</td>
-                    <td className="px-4 py-3 text-gray-700 text-sm">Partner</td>
+                    <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
+                      Monthly
+                    </td>
+                    <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
+                      stripe
+                    </td>
+                    <td className="px-4 py-3 text-gray-700 text-sm whitespace-nowrap">
+                      Partner
+                    </td>
 
-                    <td className="px-4 py-3 space-x-2">
+                    <td className="px-4 py-3 space-x-2 whitespace-nowrap">
                       <button className="text-gray-700 hover:text-blue-700">
                         <img
                           src="/icons/comicon.png"
                           alt="Custom Icon"
                           className="w-4 h-4 mr-2"
+                          style={{ maxWidth: "unset" }}
                         />
                       </button>
                       <button className="text-gray-700 hover:text-blue-700">
@@ -158,6 +160,7 @@ export default function PayoutsPage() {
                           src="/icons/delete.png"
                           alt="Custom Icon"
                           className="w-4 h-4 mr-2"
+                          style={{ maxWidth: "unset" }}
                         />
                       </button>
                       <button className="text-gray-700 hover:text-blue-700">
@@ -165,6 +168,7 @@ export default function PayoutsPage() {
                           src="/icons/edit.png"
                           alt="Custom Icon"
                           className="w-4 h-4 mr-2"
+                          style={{ maxWidth: "unset" }}
                         />
                       </button>
                     </td>

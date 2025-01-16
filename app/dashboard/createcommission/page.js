@@ -1,23 +1,11 @@
 "use client";
 
 import PrivateRoute from "../../components/PrivateRoute";
-import Header from "../../components/Header";
-import { FaArrowLeft, FaUser, FaUpload, FaTrash } from "react-icons/fa";
-import { useState } from "react";
 
 export default function CreateCommissionPage() {
   return (
     <PrivateRoute>
-      <Header
-        title={
-          <span className="flex items-center text-gray-700">
-            <FaArrowLeft className="mr-2 text-gray-700 capitalize" size={20} />{" "}
-            Commission management
-          </span>
-        }
-        description="Manage and customize commission structures for accurate partner payouts"
-      />
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto lg:p-4 p-2">
         <form>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col">

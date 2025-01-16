@@ -3,11 +3,6 @@ import { adduser } from "../../../controllers/loginControllers";
 import { connectDB } from "../../../lib/db";
 import userModel from "../../../models/userModel";
 
-// File: /pages/api/users.js
-// File: /app/api/users/route.js
-
-// app/api/users/route.js
-
 export async function POST(req, res) {
   const { email, password } = await req.json();
 
@@ -15,7 +10,6 @@ export async function POST(req, res) {
   await connectDB();
 
   try {
-    // Assuming userModel is already imported and defined
     const user = new userModel({ email, password });
     await user.save();
 

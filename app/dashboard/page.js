@@ -7,11 +7,11 @@ import { FaAppStore, FaUser, FaArrowUp, FaDollarSign } from "react-icons/fa";
 export default function DashboardPage() {
   return (
     <PrivateRoute>
-      <Header
+      {/* <Header
         title="Welcome Back 👋, Muhammad Hussain"
         description="your comprehensive overview of partner and campaign performance"
-      />
-      <div className="p-6 min-h-screen bg-transparent">
+      /> */}
+      <div className="py-4 lg:px-6 px-3 min-h-screen bg-transparent">
         <div className="mt-8 flex justify-end">
           <button className="px-4 py-2 bg-blue-500 text-white rounded flex items-center hover:bg-blue-600 hover:scale-105 transition-all duration-200">
             <img
