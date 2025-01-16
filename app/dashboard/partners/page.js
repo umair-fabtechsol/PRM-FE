@@ -1,16 +1,16 @@
 "use client";
 
-import PrivateRoute from "../components/PrivateRoute";
-import Header from "../components/Header";
+import PrivateRoute from "../../components/PrivateRoute";
+import Header from "../../components/Header.js";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 
-export default function TeamMemberPage() {
+export default function PartnerPage() {
   return (
     <PrivateRoute>
       <Header
-        title="Team Management"
-        description="manage system administrator and their permissions"
+        title="Partners Management"
+        description="View, manage and analyze partner performance"
       />
       <div className="p-6 min-h-screen">
         <div className="flex items-center justify-between  pb-4">
@@ -38,7 +38,16 @@ export default function TeamMemberPage() {
               Export
             </button>
 
-            <Link href="/addteammember">
+            <button className="flex items-center text-sm px-4 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition">
+              <img
+                src="/icons/export.png"
+                alt="Custom Icon"
+                className="w-4 h-4 mr-2"
+              />
+              Import
+            </button>
+
+            <Link href="/dashboard/addpartner">
               <button className="flex text-sm items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
                 <FaPlus className="mr-2 text-sm" />
                 Add New
@@ -53,20 +62,22 @@ export default function TeamMemberPage() {
             <thead className="bg-white border-b">
               <tr>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Member Name
+                  Name
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Email address
+                  Email
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
                   Phone
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Tag
+                  Company
                 </th>
-
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
-                  Role
+                  Type
+                </th>
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
+                  Tags
                 </th>
                 <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium">
                   Actions
@@ -101,7 +112,10 @@ export default function TeamMemberPage() {
                   <td className="px-4 py-3 text-gray-700 text-sm">
                     +1234567890
                   </td>
-
+                  <td className="px-4 py-3 text-gray-700 text-sm">
+                    Tech Company
+                  </td>
+                  <td className="px-4 py-3 text-gray-700 text-sm">Partner</td>
                   <td className="px-4 py-3 text-gray-700 text-sm">
                     <span
                       className={`${
@@ -113,13 +127,13 @@ export default function TeamMemberPage() {
                       } rounded text-sm`}
                     >
                       {index % 3 === 0
-                        ? "tag text"
+                        ? "Text for Red"
                         : index % 3 === 1
-                        ? "tag text"
-                        : "tag text"}
+                        ? "Text for Blue"
+                        : "Text for Green"}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-gray-700 text-sm">admin</td>
+
                   <td className="px-4 py-3 space-x-2">
                     <button className="text-gray-700 hover:text-blue-700">
                       <img
@@ -131,13 +145,6 @@ export default function TeamMemberPage() {
                     <button className="text-gray-700 hover:text-blue-700">
                       <img
                         src="/icons/delete.png"
-                        alt="Custom Icon"
-                        className="w-4 h-4 mr-2"
-                      />
-                    </button>{" "}
-                    <button className="text-gray-700 hover:text-blue-700">
-                      <img
-                        src="/icons/edit.png"
                         alt="Custom Icon"
                         className="w-4 h-4 mr-2"
                       />

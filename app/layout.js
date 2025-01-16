@@ -51,7 +51,9 @@ export default function RootLayout({ children }) {
                 </div>
               )}
 
-              <div className="flex-1 ml-[20%]">
+              <div
+                className={`${!isAuthPage ? " w-[80%] ml-[20%]" : "w-[100%]"}`}
+              >
                 <main className="py-4 px-1">{children}</main>
               </div>
             </div>
