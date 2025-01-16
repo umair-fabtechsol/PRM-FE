@@ -116,9 +116,7 @@ export default function PayoutsPage() {
                     payment processor
                   </th>
 
-                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
-                    Actions
-                  </th>
+                  <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap"></th>
                 </tr>
               </thead>
               <tbody>

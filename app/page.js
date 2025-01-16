@@ -18,7 +18,7 @@ export default function Home() {
   const router = useRouter();
 
   //this is for getting data from hook
-  const { setUser } = useAuth();
+  const { setUser, active, setActive } = useAuth();
 
   //this is for show password
   const togglePasswordVisibility = () => {
@@ -50,7 +50,8 @@ export default function Home() {
 
   //this is for go to dashbord
   const forClickOnLoginButton = () => {
-    router.push("/dashboard");
+    localStorage.setItem("activetab", "Dashboard");
+    setActive("Dashboard");
   };
 
   //this is for login
@@ -170,15 +171,14 @@ export default function Home() {
                 Remember for 7 days
               </label>
               <Link
-                href="/forgotpassword"
+                href="#"
                 className="ml-auto text-xs text-blue-500 hover:text-blue-700"
               >
                 Forgot password?
               </Link>
             </div>
 
-            <Link href="/dashboard">
-              {" "}
+            <Link onClick={forClickOnLoginButton} href="/dashboard">
               <button
                 type="submit"
                 className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300"

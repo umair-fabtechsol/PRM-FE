@@ -1,11 +1,91 @@
 "use client";
 
+import { useState } from "react";
 import PrivateRoute from "../../components/PrivateRoute";
 import { FaAppStore, FaUser, FaArrowUp, FaDollarSign } from "react-icons/fa";
 
 export default function ReportAndAnlyticsPage() {
+  const [widgetModal, setWidgetMoal] = useState(false);
+
   return (
     <PrivateRoute>
+      {widgetModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white w-[400px]   rounded-lg p-6 shadow-lg relative">
+            <div className="flex justify-left my-2 text-red-500">
+              <img
+                src="/icons/addwidgets.png"
+                alt="Add Widget"
+                className="mr-2"
+                width={40}
+                height={40}
+              />
+            </div>
+
+            <h2 className="text-left p-2 text-lg font-semibold text-black">
+              Custome Widget
+            </h2>
+
+            <div className="my-4">
+              <label
+                htmlFor="widget-type"
+                className="block text-sm  text-gray-700 mb-1"
+              >
+                who see's generated widget
+              </label>
+              <select
+                id="widget-type"
+                className="w-full p-2 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              >
+                <option value="type1">Custome widget</option>
+                <option value="type2">Smart widget</option>
+              </select>
+
+              <label
+                htmlFor="widget-name"
+                className="block text-sm  text-gray-700 mt-2 mb-1"
+              >
+                Widget Name
+              </label>
+              <input
+                id="widget-name"
+                type="text"
+                placeholder="Enter widget name"
+                className="w-full p-2 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              />
+              <label
+                htmlFor="widget-description"
+                className="block text-sm  text-gray-700 mt-4 mb-1"
+              >
+                Enter Widget Code
+              </label>
+              <textarea
+                id="widget-description"
+                rows="5"
+                placeholder="Enter widget description"
+                className="w-full p-2 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-black resize-none overflow-y-auto"
+              ></textarea>
+            </div>
+
+            {/* Buttons */}
+            <div className="mt-6 flex justify-between gap-4">
+              <button
+                onClick={() => setWidgetMoal(false)}
+                className="w-full py-2 text-black border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => setWidgetMoal(false)}
+                className="w-full py-2 text-white bg-blue-700 rounded-lg shadow-sm hover:bg-blue-800"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="p-6 min-h-screen bg-transparent">
         <div className="mt-8 flex justify-end items-center space-x-2">
           <select className="text-sm pl-4 pr-8 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition focus:outline-none">
@@ -24,7 +104,10 @@ export default function ReportAndAnlyticsPage() {
           <button className="px-4 mx-2 py-2 bg-blue-500 text-white rounded flex items-center hover:bg-blue-600 hover:scale-105 transition-all duration-200">
             Generated report
           </button>
-          <button className="px-4 py-2 bg-blue-500 text-white rounded flex items-center hover:bg-blue-600 hover:scale-105 transition-all duration-200">
+          <button
+            onClick={() => setWidgetMoal(true)}
+            className="px-4 py-2 bg-blue-500 text-white rounded flex items-center hover:bg-blue-600 hover:scale-105 transition-all duration-200"
+          >
             <img
               src="/icons/addwidget.svg"
               alt="Add Widget"

@@ -63,9 +63,7 @@ export default function CustomersPage() {
                   Plan
                 </th>
 
-                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap">
-                  Actions
-                </th>
+                <th className="px-4 py-3 text-left text-gray-700 text-xs font-medium whitespace-nowrap"></th>
               </tr>
             </thead>
             <tbody>
@@ -84,7 +82,7 @@ export default function CustomersPage() {
                       style={{ maxWidth: "unset" }}
                     />
                     <div className="flex flex-col ml-2">
-                      <span className="text-black text-sm font-medium">
+                      <span className="text-black text-sm ">
                         John Doe for name part of user
                       </span>
                       <span className="text-gray-500 text-xs">User Title</span>
