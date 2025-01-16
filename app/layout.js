@@ -180,7 +180,10 @@ export default function RootLayout({ children }) {
                     : "w-[100%]"
                 }`}
               >
-                <Header title={title} description={description} />
+                {" "}
+                {!isAuthPage && (
+                  <Header title={title} description={description} />
+                )}
                 <main className="py-4 px-1">{children}</main>
               </div>
             </div>

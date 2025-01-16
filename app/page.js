@@ -178,11 +178,8 @@ export default function Home() {
               </Link>
             </div>
 
-            <Link onClick={forClickOnLoginButton} href="/dashboard">
-              <button
-                type="submit"
-                className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300"
-              >
+            <Link href="/dashboard">
+              <button className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300">
                 Login
               </button>
             </Link>
