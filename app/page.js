@@ -119,7 +119,6 @@ export default function Home() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full p-3 border border-gray-300 rounded mt-2 text-black"
                 placeholder="Enter your email"
-                required
               />
 
               {errors.email && (
@@ -142,7 +141,6 @@ export default function Home() {
                   name="password"
                   className="w-full p-3 pr-10 border border-gray-300 rounded mt-2 text-black"
                   placeholder="Enter your password"
-                  required
                 />
                 {errors.password && (
                   <p className="text-red-500 text-[12px] pl-1">
