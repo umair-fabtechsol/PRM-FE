@@ -39,7 +39,7 @@ const Sidebar = () => {
     },
     { name: "Customers", icon: <FaUserCircle />, path: "/dashboard/customers" },
     { name: "Tags", icon: <FaTag />, path: "/dashboard/tags" },
-    { name: "Calendar", icon: <FaCalendarAlt />, path: "/calendar" },
+    { name: "Calendar", icon: <FaCalendarAlt />, path: "/calender" },
     {
       name: "Report & Analytics",
       icon: <FaChartLine />,
