@@ -7,6 +7,8 @@ import isEmail from "validator/lib/isEmail";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function CreatePasswordPage() {
   const [errors, setErrors] = useState({});
@@ -14,6 +16,9 @@ export default function CreatePasswordPage() {
   const [passVisibleNew, setPassVisibleNew] = useState(false);
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+
+  //this is making router
+  const router = useRouter();
 
   //this is for show password
   const togglePasswordVisibility = () => {
@@ -44,6 +49,14 @@ export default function CreatePasswordPage() {
     return isOk;
   };
 
+  //this is for click on the button
+  const forClickOnButton = () => {
+    if (forCatchErrors()) {
+      toast.success("password matched successfully");
+      router.push("/");
+    }
+  };
+
   return (
     <div className="flex w-full h-screen">
       <div className="w-full md:w-1/2 flex items-center justify-center bg-white">
@@ -57,38 +70,69 @@ export default function CreatePasswordPage() {
           </p>
 
           <form>
-            <div className="mb-6 relative">
+            <div className="mb-4">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
               >
                 New Password
               </label>
-              <input
-                type={passwordVisible ? "text" : "password"}
-                onChange={(e) => setPassword(e.target.value)}
-                id="password"
-                name="password"
-                className="w-full p-3 border border-gray-300 rounded mt-2 text-black"
-                placeholder="Enter your password"
-                required
-              />{" "}
-              {errors.password && (
+              <div className="relative">
+                <input
+                  type={passwordVisible ? "text" : "password"}
+                  onChange={(e) => setPassword(e.target.value)}
+                  id="password"
+                  name="password"
+                  className="w-full p-3 pr-10 border border-gray-300 rounded mt-2 text-black"
+                  placeholder="Enter your password"
+                  required
+                />
+                {/* {errors.password && (
+                  <p className="text-red-500 text-[12px] pl-1">
+                    {errors.password}
+                  </p>
+                )} */}
+                <span
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-black"
+                >
+                  {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Re-enter New Password
+              </label>
+              <div className="relative">
+                <input
+                  type={passVisibleNew ? "text" : "password"}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  id="password"
+                  name="password"
+                  className="w-full p-3 pr-10 border border-gray-300 rounded mt-2 text-black"
+                  placeholder="Enter your password"
+                  required
+                />
+                {/* {errors.password && (
                 <p className="text-red-500 text-[12px] pl-1">
                   {errors.password}
                 </p>
-              )}
-              <span
-                onClick={togglePasswordVisibility}
-                className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 ${
-                  passwordVisible ? "text-blue-500" : ""
-                }`}
-              >
-                {passwordVisible ? "🙈" : "👁️"}
-              </span>
+              )} */}
+                <span
+                  onClick={forNewPassVisibility}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-black"
+                >
+                  {passVisibleNew ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
             </div>
 
-            <div className="mb-4 mt-2 relative">
+            {/* <div className="mb-4 mt-2 relative">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
@@ -115,12 +159,13 @@ export default function CreatePasswordPage() {
                   passVisibleNew ? "text-blue-500" : ""
                 }`}
               >
-                {passVisibleNew ? "🙈" : "👁️"}
+                {passVisibleNew ? <FaEyeSlash /> : <FaEye />}
               </span>
-            </div>
+            </div> */}
 
             <button
-              type="submit"
+              onClick={forClickOnButton}
+              type="button"
               className=" mt-2 mb-3 w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300"
             >
               Create
@@ -136,7 +181,7 @@ export default function CreatePasswordPage() {
               </span>
 
               <Link
-                href="/login"
+                href="/"
                 className="ml-1 text-blue-500 font-semibold hover:underline"
               >
                 Login
