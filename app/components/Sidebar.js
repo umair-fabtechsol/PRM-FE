@@ -19,10 +19,14 @@ import {
   FaCogs,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const [active, setActive] = useState("Dashboard");
   const [logoutOpen, setLogoutOpen] = useState(false);
+
+  //this is for getting path name
+  const pathname = usePathname();
 
   const links = [
     { name: "Dashboard", icon: <FaHome />, path: "/dashboard" },
@@ -64,7 +68,10 @@ const Sidebar = () => {
   return (
     <PrivateRoute>
       {logoutOpen && (
-        <div className="z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div
+          className="z-[9999] fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          style={{ pointerEvents: "auto" }}
+        >
           <div className="bg-white w-[350px] rounded-lg p-6 shadow-lg relative">
             <div className="flex justify-left my-2 text-red-500">
               <img
@@ -116,7 +123,7 @@ const Sidebar = () => {
             <li
               key={link.name}
               className={`flex items-center p-3 mb-4 rounded-lg cursor-pointer
-              ${active === link.name ? "bg-blue-500 text-white" : ""}`}
+              ${pathname === link.path ? "bg-blue-500 text-white" : ""}`}
               onClick={(e) => {
                 e.preventDefault();
                 if (link.name === "Logout") {

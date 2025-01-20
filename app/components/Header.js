@@ -2,10 +2,11 @@
 import React from "react";
 import { FaSearch, FaBell } from "react-icons/fa";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = ({ title, description }) => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleButtonClick = () => {
     router.push("/dashboard/notisfications");
@@ -29,17 +30,34 @@ const Header = ({ title, description }) => {
 
         <button
           onClick={handleButtonClick}
-          className="bg-white p-2.5 rounded-md relative"
+          className={`${
+            pathname === "/dashboard/notisfications"
+              ? "bg-blue-500"
+              : "bg-white"
+          }   p-2.5 rounded-md relative`}
         >
-          <FaBell className="text-black" size={16} />
-          <span className="absolute top-[-4px] right-[-4px] bg-blue-500 w-4 h-4 rounded-full flex items-center justify-center text-white text-xs">
+          <FaBell
+            className={`${
+              pathname === "/dashboard/notisfications"
+                ? "text-white"
+                : "text-black"
+            }`}
+            size={16}
+          />
+          <span
+            className={`${
+              pathname === "/dashboard/notisfications"
+                ? "bg-black "
+                : "bg-blue-500"
+            }   absolute top-[-4px] right-[-4px]  w-4 h-4 rounded-full flex items-center justify-center text-white text-xs`}
+          >
             1
           </span>
         </button>
 
         <button className="p-0 rounded-full">
           <Image
-            src="/Images/image.jpg"
+            src="/images/image.jpg"
             alt="User"
             width={40}
             height={40}

@@ -7,6 +7,7 @@ import isEmail from "validator/lib/isEmail";
 import { useRouter } from "next/navigation";
 import { useAuth } from "./context/AuthContext";
 import Link from "next/link";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Home() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -50,8 +51,9 @@ export default function Home() {
 
   //this is for go to dashbord
   const forClickOnLoginButton = () => {
-    localStorage.setItem("activetab", "Dashboard");
-    setActive("Dashboard");
+    if (forCatchErrors()) {
+      router.push("/dashboard");
+    }
   };
 
   //this is for login
@@ -121,12 +123,12 @@ export default function Home() {
                 placeholder="Enter your email"
               />
 
-              {errors.email && (
+              {/* {errors.email && (
                 <p className="text-red-500 text-[12px] pl-1">{errors.email}</p>
-              )}
+              )} */}
             </div>
 
-            <div className="mb-4  ">
+            <div className="mb-4">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
@@ -142,18 +144,16 @@ export default function Home() {
                   className="w-full p-3 pr-10 border border-gray-300 rounded mt-2 text-black"
                   placeholder="Enter your password"
                 />
-                {errors.password && (
+                {/* {errors.password && (
                   <p className="text-red-500 text-[12px] pl-1">
                     {errors.password}
                   </p>
-                )}
+                )} */}
                 <span
                   onClick={togglePasswordVisibility}
-                  className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 ${
-                    passwordVisible ? "text-blue-500" : ""
-                  }`}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-black"
                 >
-                  {passwordVisible ? "🙈" : "👁️"}
+                  {passwordVisible ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
             </div>
@@ -169,18 +169,24 @@ export default function Home() {
                 Remember for 7 days
               </label>
               <Link
-                href="#"
+                href="/forgotpassword"
                 className="ml-auto text-xs text-blue-500 hover:text-blue-700"
               >
                 Forgot password?
               </Link>
             </div>
 
-            <Link href="/dashboard">
-              <button className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300">
-                Login
-              </button>
-            </Link>
+            <button
+              onClick={forClickOnLoginButton}
+              type="button"
+              className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300"
+            >
+              Login
+            </button>
+
+            {/* <Link href="/dashboard">
+             
+            </Link> */}
           </form>
         </div>
       </div>
