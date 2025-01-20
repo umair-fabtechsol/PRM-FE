@@ -127,35 +127,38 @@ export default function Home() {
                 <p className="text-red-500 text-[12px] pl-1">{errors.email}</p>
               )}
             </div>
-
             <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  type={passwordVisible ? "text" : "password"}
-                  onChange={(e) => setPassword(e.target.value)}
-                  id="password"
-                  name="password"
-                  className="w-full p-3 pr-10 border border-gray-300 rounded mt-2 text-black"
-                  placeholder="Enter your password"
-                />
-                {errors.password && (
-                  <p className="text-red-500 text-[12px] pl-1">
-                    {errors.password}
-                  </p>
-                )}
-                <span
-                  onClick={togglePasswordVisibility}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-black"
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700"
                 >
-                  {passwordVisible ? <FaEyeSlash /> : <FaEye />}
-                </span>
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    type={passwordVisible ? "text" : "password"}
+                    onChange={(e) => setPassword(e.target.value)}
+                    id="password"
+                    name="password"
+                    className="w-full p-3 pr-12 border border-gray-300 rounded mt-2 text-black"
+                    placeholder="Enter your password"
+                  />
+
+                  <span
+                    onClick={togglePasswordVisibility}
+                    className="absolute right-3 top-0 bottom-0 flex items-center cursor-pointer text-black"
+                  >
+                    {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
               </div>
+
+              {errors.password && (
+                <p className="text-red-500 text-[12px] pl-1">
+                  {errors.password}
+                </p>
+              )}
             </div>
 
             <div className="mb-6 flex items-center">
