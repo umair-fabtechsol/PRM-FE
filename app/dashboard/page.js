@@ -75,7 +75,7 @@ export default function DashboardPage() {
         </div>
       )}
 
-      <div className="py-4 lg:px-6 px-3 min-h-screen bg-transparent">
+      <div className="py-4 lg:px-6 px-3  bg-transparent">
         <div className="mt-8 flex justify-end">
           <button
             onClick={() => setSmartWidgetOpen(true)}
