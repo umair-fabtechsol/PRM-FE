@@ -68,6 +68,9 @@ export default function PasswordResetPage() {
             </div>
 
             <button
+              onClick={(e) => {
+                e.preventDefault();
+              }}
               type="submit"
               className=" mt-2 mb-3 w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300"
             >

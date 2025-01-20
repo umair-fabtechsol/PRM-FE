@@ -61,7 +61,7 @@ const Page = () => {
               type="text"
               id="search-input"
               name="search-input"
-              className="py-2 px-16 pl-11 w-full border border-gray-200 shadow-sm rounded-lg text-sm"
+              className="py-2 px-16 pl-11 w-full border border-gray-200 text-black shadow-sm rounded-lg text-sm"
               placeholder="Search..."
             />
             <div className="absolute inset-y-0 right-0 flex items-center  pr-4">
@@ -102,7 +102,7 @@ const Page = () => {
           <div className="flex gap-4">
             <select
               onChange={(e) => handleViewChange(e.target.value)}
-              className="p-3 border rounded-lg focus:outline-none"
+              className="p-3 border text-black rounded-lg focus:outline-none"
               value={view}
             >
               <option value="timeGridWeek">Weekly</option>

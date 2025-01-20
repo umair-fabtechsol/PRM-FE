@@ -11,7 +11,7 @@ const BroadcastModal = ({ isOpen, closeModal }) => {
             role="dialog"
             aria-labelledby="hs-small-modal-label"
           >
-            <div className="bg-white border shadow-sm rounded-xl w-full max-w-lg mx-auto dark:bg-neutral-800 dark:border-neutral-700">
+            <div className=" border bg-white shadow-sm rounded-xl w-full max-w-lg mx-auto  dark:border-neutral-700">
               <div className="flex gap-y-4 flex-col  py-3 px-4  ">
                 <div className="">
                   <svg
@@ -55,7 +55,7 @@ const BroadcastModal = ({ isOpen, closeModal }) => {
                 </div>
                 <h3
                   id="hs-small-modal-label"
-                  className="font-bold text-gray-800 dark:text-white"
+                  className="font-bold text-gray-800 "
                 >
                   Broadcast
                 </h3>
@@ -63,7 +63,9 @@ const BroadcastModal = ({ isOpen, closeModal }) => {
               <div className="p-4 text-[#2E2E2E] font-Inter font-medium  max-h-[60vh] overflow-y-auto">
                 <div className="flex  justify-between gap-4">
                   <div className="mb-4 w-1/2 md:mb-0 ">
-                    <label className="block mb-2">Select Tag</label>
+                    <label className="block text-gray-800 mb-2">
+                      Select Tag
+                    </label>
                     <select className="border rounded-lg w-full px-4 py-2">
                       <option>Select</option>
                     </select>
@@ -87,15 +89,16 @@ const BroadcastModal = ({ isOpen, closeModal }) => {
               <div className="flex w-full justify-end items-center gap-x-2 py-3 px-4  dark:border-neutral-700">
                 <button
                   onClick={closeModal}
-                  className="py-2 w-1/2 px-3 text-sm font-medium rounded-lg border bg-white text-gray-800 hover:bg-gray-50 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+                  className="py-2 w-1/2 px-3 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-800 hover:bg-gray-100 hover:border-gray-500 hover:shadow-md transition-all duration-300"
                 >
-                  Close
+                  Cancel
                 </button>
+
                 <button
                   type="button"
                   className="py-2 w-1/2 px-3 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700"
                 >
-                  Save changes
+                  Save
                 </button>
               </div>
             </div>

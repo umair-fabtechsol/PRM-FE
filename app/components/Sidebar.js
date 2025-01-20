@@ -119,7 +119,7 @@ const Sidebar = () => {
             WebkitScrollbar: "none",
           }}
         >
-          {links.map((link) => (
+          {/* {links.map((link) => (
             <li
               key={link.name}
               className={`flex items-center p-3 mb-4 rounded-lg cursor-pointer
@@ -141,6 +141,28 @@ const Sidebar = () => {
                 </div>
               </Link>
             </li>
+          ))} */}
+
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              href={link.path}
+              className={`flex items-center p-3 mb-4 rounded-lg cursor-pointer
+      ${pathname === link.path ? "bg-blue-500 text-white" : ""}`}
+              onClick={(e) => {
+                if (link.name === "Logout") {
+                  e.preventDefault(); // Logout ka modal dikhane ke liye prevent default
+                  setLogoutOpen(true);
+                  return;
+                }
+                setActive(link.name); // Active state ko set karna
+              }}
+            >
+              <div className="flex items-center w-full">
+                <div className="text-xl">{link.icon}</div>
+                <span className="ml-3 lg:inline-block hidden">{link.name}</span>
+              </div>
+            </Link>
           ))}
         </ul>
       </div>

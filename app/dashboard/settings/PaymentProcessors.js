@@ -7,7 +7,7 @@ const PaymentProcessors = () => {
         <h2 className=" text-[#2E2E2E] text-sm border-b-2 p-4 font-Inter font-bold  mb-6">
           Payment Processors
         </h2>
-        <div className="px-4">
+        <div className="px-4 text-gray-700">
           <div className="flex items-center p-4 bg-white rounded-lg shadow-md max-w-full mx-auto mt-10">
             <div className="flex-shrink-0">
               <div className="bg-[#ebf0fa] rounded-full p-2">
@@ -30,7 +30,7 @@ const PaymentProcessors = () => {
                   defaultValue=""
                   className="sr-only peer"
                 />
-                <div className="relative w-11 h-6 bg-gray-200  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+                <div className="relative w-11 h-6 bg-gray-200  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
               </label>
             </div>
           </div>
@@ -57,29 +57,20 @@ const PaymentProcessors = () => {
                   defaultValue=""
                   className="sr-only peer"
                 />
-                <div className="relative w-11 h-6 bg-gray-200  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+                <div className="relative w-11 h-6 bg-gray-200  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
               </label>
             </div>
           </div>
         </div>
 
         <div className="flex justify-end p-4 mt-auto space-x-4">
-          <button className="bg-[#FFFFFF] border rounded-lg py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm">
+          <button className="bg-[#FFFFFF] border border-gray-300 rounded-lg py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm transition-all duration-300 hover:bg-gray-100 hover:border-gray-400">
             Cancel
           </button>
-          <button className="bg-[#3366CC] py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm">
+          <button className="bg-[#3366CC] py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm transition-all duration-300 hover:bg-[#254a99]">
             Save
           </button>
         </div>
-
-        {/* <div className="absolute bottom-4 right-2 ">
-          <button className="bg-[#FFFFFF] border rounded-lg  py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm ">
-            Cancel
-          </button>
-          <button className="bg-[#3366CC] ml-6 py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm ">
-            Save
-          </button>
-        </div> */}
       </div>
     </>
   );

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Integration = () => {
-  return (
-    <div>Integration</div>
-  )
-}
+  return <div className="text-gray-700">Integration</div>;
+};
 
-export default Integration
+export default Integration;

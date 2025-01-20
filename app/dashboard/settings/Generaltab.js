@@ -5,7 +5,7 @@ const Generaltab = ({ activetab }) => {
     <>
       <div className="bg-white min-h-screen flex flex-col rounded-lg shadow-md">
         <div className="flex justify-center flex-1">
-          <div className="p-8 w-full max-w-4xl">
+          <div className="p-8 w-full max-w-4xl text-gray-700">
             <h2 className=" text-[#2E2E2E] text-sm border-b-2 pb-3 font-Inter font-bold  mb-6">
               General Settings
             </h2>
@@ -81,20 +81,12 @@ const Generaltab = ({ activetab }) => {
               </div>
             </div>
           </div>
-          {/* <div className="absolute bottom-4 right-2 ">
-            <button className="bg-[#FFFFFF] border rounded-lg  py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm ">
-              Cancel
-            </button>
-            <button className="bg-[#3366CC] ml-6 py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm ">
-              Save
-            </button>
-          </div> */}
         </div>{" "}
         <div className="flex justify-end p-4 mt-auto space-x-4">
-          <button className="bg-[#FFFFFF] border rounded-lg py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm">
+          <button className="bg-[#FFFFFF] border border-gray-300 rounded-lg py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm transition-all duration-300 hover:bg-gray-100 hover:border-gray-400">
             Cancel
           </button>
-          <button className="bg-[#3366CC] py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm">
+          <button className="bg-[#3366CC] py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm transition-all duration-300 hover:bg-[#254a99]">
             Save
           </button>
         </div>
