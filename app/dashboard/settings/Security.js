@@ -52,22 +52,13 @@ const Security = () => {
         </div>
 
         <div className="flex justify-end p-4 mt-auto space-x-4">
-          <button className="bg-[#FFFFFF] border rounded-lg py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm">
+          <button className="bg-[#FFFFFF] border border-gray-300 rounded-lg py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm transition-all duration-300 hover:bg-gray-100 hover:border-gray-400">
             Cancel
           </button>
-          <button className="bg-[#3366CC] py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm">
+          <button className="bg-[#3366CC] py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm transition-all duration-300 hover:bg-[#254a99]">
             Save
           </button>
         </div>
-
-        {/* <div className="absolute bottom-4 right-2 ">
-          <button className="bg-[#FFFFFF] border rounded-lg  py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm ">
-            Cancel
-          </button>
-          <button className="bg-[#3366CC] ml-6 py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm ">
-            Save
-          </button>
-        </div> */}
       </div>
     </>
   );

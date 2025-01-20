@@ -44,13 +44,13 @@ const Billing = () => {
             <div className="flex flex-col mt-6">
               <div className=" overflow-x-auto  sm:-mx-6 ">
                 <div className=" inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                  <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <div className="overflow-hidden border border-gray-200 text-gray-700 md:rounded-lg">
+                    <table className="min-w-full divide-y divide-gray-200 ">
                       <thead className="bg-white dark:bg-gray-800">
-                        <tr>
+                        <tr className="bg-white">
                           <th
                             scope="col"
-                            className="px-3  font-[Inter] text-xs  text-secondry  font-medium "
+                            className="px-3   font-[Inter] text-xs  text-secondry  font-medium "
                           >
                             <button className="flex items-center gap-2 justify-center focus:outline-none">
                               <span className="font-Inter text-xs text-[#535862] font-medium ">
@@ -144,7 +144,7 @@ const Billing = () => {
                                     defaultValue=""
                                     className="sr-only peer"
                                   />
-                                  <div className="relative w-6 h-4 bg-gray-200  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-2.5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
+                                  <div className="relative w-6 h-4 bg-gray-200  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-2.5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600" />
                                 </label>
                                 <button className="px-1 py-1  text-gray-500 transition-colors duration-200 rounded-lg dark:text-gray-300 hover:bg-gray-100">
                                   <svg
@@ -215,22 +215,13 @@ const Billing = () => {
         </div>
 
         <div className="flex justify-end p-4 space-x-4 mb-4">
-          <button className="bg-[#FFFFFF] border rounded-lg  py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm ">
+          <button className="bg-[#FFFFFF] border border-gray-300 rounded-lg py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm transition-all duration-300 hover:bg-gray-100 hover:border-gray-400">
             Cancel
           </button>
-          <button className="bg-[#3366CC] ml-6 py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm ">
+          <button className="bg-[#3366CC] py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm transition-all duration-300 hover:bg-[#254a99]">
             Save
           </button>
         </div>
-
-        {/* <div className="absolute bottom-4 right-2 ">
-          <button className="bg-[#FFFFFF] border rounded-lg  py-2 px-12 text-[#2E2E2E] font-Inter font-semibold text-sm ">
-            Cancel
-          </button>
-          <button className="bg-[#3366CC] ml-6 py-2 px-12 rounded-lg text-[#FFFFFF] font-Inter font-semibold text-sm ">
-            Save
-          </button>
-        </div> */}
       </div>
     </>
   );

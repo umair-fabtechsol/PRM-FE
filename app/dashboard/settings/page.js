@@ -9,6 +9,7 @@ import Integration from "./Integration";
 import { MdLockOutline } from "react-icons/md";
 import Security from "./Security";
 import Notisfications from "./Notisfications";
+import { BiLink } from "react-icons/bi";
 
 const page = () => {
   const Array = [
@@ -17,7 +18,7 @@ const page = () => {
       label: "General Setting",
       Icon: (isActive) => (
         <svg
-          style={{ fill: isActive ? "white" : "#2E2E2E" }}
+          style={{ fill: isActive && "white" }}
           width="16"
           height="16"
           viewBox="0 0 16 16"
@@ -33,7 +34,7 @@ const page = () => {
       path: "Security",
       label: "Security",
       Icon: (isActive) => (
-        <MdLockOutline style={{ fill: isActive ? "white" : "#2E2E2E" }} />
+        <MdLockOutline style={{ fill: isActive && "white" }} />
       ),
     },
     {
@@ -48,7 +49,7 @@ const page = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            style={{ fill: isActive ? "white" : "#2E2E2E" }}
+            style={{ fill: isActive && "white" }}
             d="M4.66732 14H11.334C12.0704 14 12.6673 13.403 12.6673 12.6667V3.33333C12.6673 2.59695 12.0704 2 11.334 2H4.66732C3.93094 2 3.33398 2.59695 3.33398 3.33333V12.6667M4.66732 14C3.93094 14 3.33398 13.403 3.33398 12.6667M4.66732 14H6.00065M3.33398 12.6667C3.33398 11.9303 3.93094 11.3333 4.66732 11.3333H11.334C12.0704 11.3333 12.6673 10.7364 12.6673 10V9.33333M6.00065 4.66667H10.0007M6.66732 6.66667H9.33398"
             stroke="#2E2E2E"
             strokeWidth="1.5"
@@ -66,10 +67,11 @@ const page = () => {
           width="16"
           height="16"
           viewBox="0 0 16 16"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            style={{ fill: isActive ? "white" : "#2E2E2E" }}
+            style={{ fill: isActive && "white" }}
             d="M9.33398 12V12.6667C9.33398 13.403 8.73703 14 8.00065 14C7.26427 14 6.66732 13.403 6.66732 12.6667V12M8.00065 3.33333V2M8.00065 3.33333C9.8416 3.33333 11.334 4.82572 11.334 6.66667V10H11.6673C12.2196 10 12.6673 10.4477 12.6673 11C12.6673 11.5523 12.2196 12 11.6673 12H4.33398C3.7817 12 3.33398 11.5523 3.33398 11C3.33398 10.4477 3.7817 10 4.33398 10H4.66732V6.66667C4.66732 4.82572 6.1597 3.33333 8.00065 3.33333Z"
             stroke="#2E2E2E"
             strokeWidth="1.5"
@@ -83,30 +85,19 @@ const page = () => {
       path: "Payment Processors",
       label: "Payment Processors",
       Icon: (isActive) => (
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            style={{ fill: isActive ? "white" : "#2E2E2E" }}
-            d="M9.33398 12V12.6667C9.33398 13.403 8.73703 14 8.00065 14C7.26427 14 6.66732 13.403 6.66732 12.6667V12M8.00065 3.33333V2M8.00065 3.33333C9.8416 3.33333 11.334 4.82572 11.334 6.66667V10H11.6673C12.2196 10 12.6673 10.4477 12.6673 11C12.6673 11.5523 12.2196 12 11.6673 12H4.33398C3.7817 12 3.33398 11.5523 3.33398 11C3.33398 10.4477 3.7817 10 4.33398 10H4.66732V6.66667C4.66732 4.82572 6.1597 3.33333 8.00065 3.33333Z"
-            stroke="#2E2E2E"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <BiLink
+          size={16} // Icon ka size
+          color={isActive ? "white" : "#2E2E2E"} // Active state ka color
+        />
       ),
     },
+
     {
       path: "Billing",
       label: "Billing",
       Icon: (isActive) => (
         <svg
-          style={{ fill: isActive ? "white" : "#2E2E2E" }}
+          style={{ fill: isActive && "white" }}
           width="16"
           height="16"
           viewBox="0 0 16 16"
@@ -128,7 +119,7 @@ const page = () => {
       label: "Customizations",
       Icon: (isActive) => (
         <svg
-          style={{ fill: isActive ? "white" : "#2E2E2E" }}
+          style={{ fill: isActive && "white" }}
           width="16"
           height="16"
           viewBox="0 0 16 16"
@@ -150,7 +141,7 @@ const page = () => {
       label: "Integrations",
       Icon: (isActive) => (
         <svg
-          style={{ fill: isActive ? "white" : "#2E2E2E" }}
+          style={{ fill: isActive && "white" }}
           width="16"
           height="16"
           viewBox="0 0 16 16"

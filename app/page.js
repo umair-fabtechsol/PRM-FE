@@ -124,9 +124,9 @@ export default function Home() {
                 required
               />
 
-              {/* {errors.email && (
+              {errors.email && (
                 <p className="text-red-500 text-[12px] pl-1">{errors.email}</p>
-              )} */}
+              )}
             </div>
 
             <div className="mb-4">
@@ -146,11 +146,11 @@ export default function Home() {
                   placeholder="Enter your password"
                   required
                 />
-                {/* {errors.password && (
+                {errors.password && (
                   <p className="text-red-500 text-[12px] pl-1">
                     {errors.password}
                   </p>
-                )} */}
+                )}
                 <span
                   onClick={togglePasswordVisibility}
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-black"
@@ -185,10 +185,6 @@ export default function Home() {
             >
               Login
             </button>
-
-            {/* <Link href="/dashboard">
-             
-            </Link> */}
           </form>
         </div>
       </div>

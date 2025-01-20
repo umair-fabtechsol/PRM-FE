@@ -53,12 +53,12 @@ const page = () => {
               key={notification.id}
               className="flex justify-between items-start border-b-2 p-4 "
             >
-              <div className="flex items-start space-x-2">
+              <div className="flex items-start  space-x-2">
                 {notification.unread && (
                   <span className="bg-[#3366CC] w-3 h-3 rounded-full mt-1"></span>
                 )}
                 <div>
-                  <p>{notification.text}</p>
+                  <p className="text-gray-700">{notification.text}</p>
                   <p className="text-gray-500 text-sm">{notification.date}</p>
                 </div>
               </div>
