@@ -12,7 +12,6 @@ export default function DeletePartnerModal({ isOpen, onOpenChange, confirmDelete
   useLockBodyScroll(isOpen);
 
   if (!isOpen) return null;
-  if (!isOpen) return;
   return (
     <div>
       <div
