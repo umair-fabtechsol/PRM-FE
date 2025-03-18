@@ -17,6 +17,7 @@ export default function CreateCampaignPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [images, setImages] = useState([]);
   const [uploadProgress, setUploadProgress] = useState({});
+  const [siteLink, setSiteLink] = useState('https://fabtechsol.com');
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
@@ -54,6 +55,7 @@ export default function CreateCampaignPage() {
     "General Info",
     "Goals",
     "Assets",
+    "Text",
     "Configure",
     "Calendar",
     "Review",
@@ -356,6 +358,77 @@ export default function CreateCampaignPage() {
               )}
               {currentStep === 3 && (
                 <form>
+                  <div className=" rounded-lg flex md:flex-row flex-col gap-4">
+                    <div className=" md:w-3/5 w-full">
+                      {/* Site Link Input */}
+                      <h3 className="text-lg font-semibold text-black">
+                        Site Link
+                      </h3>
+                      <div className="mb-4 flex flex-col sm:flex-row items-center gap-2">
+                        <input
+                          type="text"
+                          value={siteLink}
+                          onChange={(e) => setSiteLink(e.target.value)}
+                          className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+                        />
+                        <button className="bg-[#3366CC] text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                          Preview
+                        </button>
+                      </div>
+
+                      {/* Website Preview */}
+                      <div className="border rounded-lg overflow-hidden">
+                        <iframe
+                          src={siteLink}
+                          className="w-full h-72 sm:h-96 border-none"
+                          title="Website Preview"
+                        ></iframe>
+                      </div>
+                    </div>
+                    {/* Review & Share */}
+                    <div className="md:w-2/5 w-full">
+                      <div className="p-4 border border-gray-300 rounded-lg bg-white ">
+                        <h3 className="text-lg font-semibold text-black">
+                          Review & Share
+                        </h3>
+                        <p className="text-sm text-black">
+                          Edit any fields below or re-select a different element
+                          on the left and then hit save.{" "}
+                        </p>
+
+                        <div className="mt-4">
+                          <label className="block text-black">
+                            Target Element Selector
+                          </label>
+                          <input
+                            type="text"
+                            value={siteLink}
+                            className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+                            readOnly
+                          />
+                        </div>
+
+                        <div className="mt-4">
+                          <label className="block text-black">
+                            Conversation Rate
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="$"
+                            className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+                          />
+                        </div>
+
+                        <button className="mt-4 w-full bg-[#3366CC] text-white py-2 rounded-md hover:bg-blue-600">
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              )}
+              {currentStep === 4 && (
+                <form>
                   <div className="grid grid-cols-1 sm:grid-cols-2 my-3 gap-4">
                     <div className="flex flex-col">
                       <label htmlFor="tag" className="text-gray-700 text-sm">
@@ -449,7 +522,7 @@ export default function CreateCampaignPage() {
                   </div>
                 </form>
               )}
-              {currentStep === 4 && (
+              {currentStep === 5 && (
                 <div className="py-4 lg:px-6 px-3  min-h-screen bg-transparent">
                   <div className="flex justify-between">
                     <div className="relative flex rounded-lg border">
@@ -572,7 +645,7 @@ export default function CreateCampaignPage() {
                               weekday: "short",
                             })}
                           </span>
-                          <span className="font-Inter font-medium text-[#000000] text-xl">
+                          <span className="font-Inter font-medium text-black text-xl">
                             {arg.date.getDate()}
                           </span>
                         </span>
@@ -634,7 +707,7 @@ export default function CreateCampaignPage() {
                   </div>
                 </div>
               )}
-              {currentStep === 5 && (
+              {currentStep === 6 && (
                 <div className="px-2 bg-transparent">
                   <div className="py-2   my-2">
                     <p className="text-black py-2  text-sm">Name</p>
