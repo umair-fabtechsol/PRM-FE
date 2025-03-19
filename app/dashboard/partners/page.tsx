@@ -1,6 +1,6 @@
 'use client';
 
-import PrivateRoute from '@/app/components/PrivateRoute';
+import PrivateRoute from '@/app/_components/PrivateRoute';
 
 import React from 'react';
 import PartnersTable from './_components/PartnersTable';
