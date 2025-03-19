@@ -1,4 +1,4 @@
-import Table from '@/app/components/ui/Table';
+import Table from '@/app/_components/ui/Table';
 import Image from 'next/image.js';
 import React from 'react';
 import { PartnerType } from '@/types';

@@ -1,16 +1,15 @@
-import Table from '@/app/components/ui/Table';
+import Table from '@/app/_components/ui/Table';
 import Image from 'next/image.js';
 import React from 'react';
 import { PayoutType } from '@/types';
 import { PAYOUT_LIST } from '@/dummy-data';
-
 
 export default function PayoutsTable() {
   const columns = React.useMemo(() => {
     return [
       {
         key: 'name' as keyof PayoutType,
-        header: 'Payout Name'
+        header: 'Payout Name',
       },
       { key: 'amount' as keyof PayoutType, header: 'Payout Amount' },
       { key: 'date' as keyof PayoutType, header: 'Schedule Date' },
@@ -28,7 +27,7 @@ export default function PayoutsTable() {
               <Image width={16} height={16} src='/icons/delete.png' alt='Delete Icon' />
             </button>
             <button className='text-gray-700 hover:text-blue-700'>
-              <Image width={16} height={16} src="/icons/edit.png" alt='Delete Icon' />
+              <Image width={16} height={16} src='/icons/edit.png' alt='Delete Icon' />
             </button>
           </div>
         ),
