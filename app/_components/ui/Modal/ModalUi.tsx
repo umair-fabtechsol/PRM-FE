@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { ModalProps } from './types';
-import { cn } from '@/utils';
+// import cn  from '@/utils';
 import { useLockBodyScroll } from '@/app/_hooks/useLockBodyScroll';
+import { cn } from '@/Utils';
 
 export function Modal({ size = 'sm', children, hideBodyScrollBar, onClose, closeOnOutSideClick, isOpen }: ModalProps) {
   useLockBodyScroll(hideBodyScrollBar && isOpen);

@@ -1,8 +1,8 @@
 'use client';
 
-import PrivateRoute from '@app/_components/PrivateRoute';
 import { FaUser } from 'react-icons/fa';
 import { useState } from 'react';
+import PrivateRoute from '@/app/_components/PrivateRoute';
 
 export default function AddTeamMember() {
   const [image, setImage] = useState(null);
