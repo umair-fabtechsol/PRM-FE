@@ -1,5 +1,4 @@
 'use client';
-import { TableinDashboardPageData } from '@/utils/DummyData';
 import React, { useState } from 'react';
 import BillingModal from './BillingModal';
 import BillingTable from './_components/BillingTable';

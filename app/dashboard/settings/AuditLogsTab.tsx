@@ -1,5 +1,4 @@
 import React from 'react';
-// import { AuditLogTabsTData } from '@/utils/DummyData';
 import AuditLogsTable from './_components/AuditLogsTable';
 
 const AuditLogsTab = () => {
