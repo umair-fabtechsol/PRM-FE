@@ -1,34 +1,34 @@
 // webhooks/stripeWebhooks.js
-const { stripe } = require('../config/stripe');
-const PaymentService = require('../services/paymentService');
+const { stripe } = require("../config/stripe");
+const PaymentService = require("../services/paymentService");
 
 const webhookHandlers = {
-  'payment_intent.succeeded': async (paymentIntent) => {
+  "payment_intent.succeeded": async (paymentIntent) => {
     // Payment was successful (already handled in processConversion)
   },
-  'payment_intent.payment_failed': async (paymentIntent) => {
+  "payment_intent.payment_failed": async (paymentIntent) => {
     const conversionId = paymentIntent.metadata.conversionId;
     await PaymentService.handleFailedPayment(conversionId);
   },
-  'transfer.paid': async (transfer) => {
+  "transfer.paid": async (transfer) => {
     // Partner received their funds
     await Conversion.updateOne(
-      { 'paymentDetails.transferId': transfer.id },
-      { 'paymentDetails.transferStatus': 'completed' }
+      { "paymentDetails.transferId": transfer.id },
+      { "paymentDetails.transferStatus": "completed" }
     );
   },
-  'transfer.failed': async (transfer) => {
+  "transfer.failed": async (transfer) => {
     // Handle failed transfer to partner
     await Conversion.updateOne(
-      { 'paymentDetails.transferId': transfer.id },
-      { 'paymentDetails.transferStatus': 'failed' }
+      { "paymentDetails.transferId": transfer.id },
+      { "paymentDetails.transferStatus": "failed" }
     );
     // Implement retry logic here
-  }
+  },
 };
 
 module.exports.handleStripeWebhook = async (req, res) => {
-  const sig = req.headers['stripe-signature'];
+  const sig = req.headers["stripe-signature"];
   let event;
 
   try {
