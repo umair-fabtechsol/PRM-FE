@@ -1,7 +1,7 @@
 // app/api/users/route.js
 import { adduser } from "../../../controllers/loginControllers";
 import { connectDB } from "../../../lib/db";
-import userModel from "../../../models/userModel";
+import userModel from "../../../backend/src/models/userModel";
 
 export async function POST(req, res) {
   const { email, password } = await req.json();

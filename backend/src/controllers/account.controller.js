@@ -23,7 +23,7 @@ exports.createAdminAccount = async (req, res) => {
 exports.createPartnerAccount = async (req, res) => {
   try {
     // Create connected account for partner
-    const account = await createConnectedAccount('partner', req.user.email);
+    const account = await createConnectedAccount('partner', req.user.email, );
     
     // Generate onboarding link
     const onboardingLink = await generateOnboardingLink(account.id);

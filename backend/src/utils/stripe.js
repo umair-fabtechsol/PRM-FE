@@ -155,3 +155,13 @@ app.post("/webhooks/stripe", async (req, res) => {
 
   res.json({ received: true });
 });
+
+
+// Example Radar rule to prevent fraud
+await stripe.radar.valueLists.create({
+  alias: 'blocked_ips',
+  name: 'Blocked IPs',
+  item_type: 'ip_address',
+  items: ['123.456.789.0'] // Add suspicious IPs
+});
+

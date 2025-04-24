@@ -1,5 +1,8 @@
 // controllers/conversionController.js
-const PaymentService = require('../services/paymentService');
+const stripe = require("@/Utils/stripe");
+const Conversion = require("../models/Conversion");
+const ConversionService = require("../services/conversionService");
+
 
 exports.trackConversion = async (req, res) => {
   try {
@@ -15,7 +18,10 @@ exports.trackConversion = async (req, res) => {
     });
 
     // Process payment async (use queue in production)
-    PaymentService.processConversion(conversion._id)
+    ConversionService.processConversion(conversion._id, ['admin'])
+      .catch(err => console.error('Payment processing error:', err));
+
+    ConversionService.chargeAdmin(conversion._id)
       .catch(err => console.error('Payment processing error:', err));
 
     res.json({ success: true, conversionId: conversion._id });
