@@ -8,3 +8,4 @@ export * from './payout.dummy-data';
 export * from './roleandpermissions.dummy-data';
 export * from './auditlogs.dummy-data';
 export * from './billing.dummy-data';
+export * from "./feature.dummy-data";

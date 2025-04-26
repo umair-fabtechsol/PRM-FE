@@ -10,6 +10,7 @@ import { MdLockOutline } from "react-icons/md";
 import Security from "./Security";
 import Notisfications from "./Notisfications";
 import { BiLink } from "react-icons/bi";
+import Feature from "./Feature";
 
 const page = () => {
   const Array = [
@@ -158,6 +159,28 @@ const page = () => {
         </svg>
       ),
     },
+    {
+      path: "Feature",
+      label: "Feature",
+      Icon: (isActive) => (
+        <svg
+          style={{ fill: isActive && "white" }}
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11.9993 7.33329L13.0565 6.2761C13.5772 5.7554 13.5772 4.91119 13.0565 4.39049L11.6088 2.94277C11.0881 2.42207 10.2439 2.42207 9.72321 2.94277L8.66602 3.99996M11.9993 7.33329L5.99935 13.3333H2.66602V9.99996L8.66602 3.99996M11.9993 7.33329L8.66602 3.99996"
+            stroke="#2E2E2E"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      ),
+    },
   ];
 
   const [activeTab, setActiveTab] = useState("General");
@@ -198,6 +221,7 @@ const page = () => {
           {activeTab === "Billing" && <Billing />}
           {activeTab === "Customizations" && <Coustomizations />}
           {activeTab === "Integrations" && <Integration />}
+          {activeTab === "Feature" && <Feature />}
         </div>
       </div>
     </>
