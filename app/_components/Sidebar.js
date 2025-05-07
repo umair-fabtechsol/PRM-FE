@@ -51,11 +51,11 @@ const Sidebar = () => {
       path: '/dashboard/reportandanlytic',
     },
     { name: 'Payouts', icon: <FaWallet />, path: '/dashboard/payouts' },
-    {
-      name: 'Role & Permissions',
-      icon: <FaShieldAlt />,
-      path: '/dashboard/roleandpermision',
-    },
+    // {
+    //   name: 'Role & Permissions',
+    //   icon: <FaShieldAlt />,
+    //   path: '/dashboard/roleandpermision',
+    // },
     {
       name: 'Communication',
       icon: <FaComments />,
