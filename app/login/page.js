@@ -170,7 +170,8 @@ export default function LoginPage() {
             </div>
 
             <button
-              onClick={(e) => forLoginUser(e)}
+              onClick={(e) => router.push("/dashboard")}
+              // onClick={(e) => forLoginUser(e)}
               type="submit"
               className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300"
             >
