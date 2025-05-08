@@ -9,6 +9,9 @@ import { usePathname } from 'next/navigation';
 import Header from '@/app/_components/Header';
 import Head from 'next/head';
 import { FaArrowLeft } from 'react-icons/fa';
+import { Provider } from "react-redux"
+import { store } from './store/store';
+import 'dotenv/config'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -130,33 +133,49 @@ export default function RootLayout({ children }) {
   }
 
   return (
-    <html lang='en'>
+    <html lang="en">
       <Head>
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='' />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-          href='https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'
-          rel='stylesheet'
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet"
         />
       </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <AuthProvider>
-          <ToastProvider>
-            <div className='flex min-h-screen'>
-              {!isAuthPage && (
-                <div className='lg:w-[20%]  w-[10%] text-black fixed h-full'>
-                  <Sidebar />
-                </div>
-              )}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Provider store={store}>
+          <AuthProvider>
+            <ToastProvider>
+              <div className="flex min-h-screen">
+                {!isAuthPage && (
+                  <div className="lg:w-[20%]  w-[10%] text-black fixed h-full">
+                    <Sidebar />
+                  </div>
+                )}
 
-              <div className={`${!isAuthPage ? ' lg:w-[80%] w-[90%] lg:ml-[20%] ml-[10%]' : 'w-[100%]'}`}>
-                {' '}
-                {!isAuthPage && <Header title={title} description={description} />}
-                <main className='py-4 px-1'>{children}</main>
+                <div
+                  className={`${
+                    !isAuthPage
+                      ? " lg:w-[80%] w-[90%] lg:ml-[20%] ml-[10%]"
+                      : "w-[100%]"
+                  }`}
+                >
+                  {" "}
+                  {!isAuthPage && (
+                    <Header title={title} description={description} />
+                  )}
+                  <main className="py-4 px-1">{children}</main>
+                </div>
               </div>
-            </div>
-          </ToastProvider>
-        </AuthProvider>
+            </ToastProvider>
+          </AuthProvider>
+        </Provider>
       </body>
     </html>
   );
