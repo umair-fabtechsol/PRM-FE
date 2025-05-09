@@ -4,15 +4,16 @@ import { useState } from "react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import isEmail from "validator/lib/isEmail";
-import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useLoginMutation } from "../store/apis/authApis";
+import { useDispatch } from "react-redux";
+import { addAdmin } from "../store/slices/authSlice";
 
 export default function LoginPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const { setUser } = useAuth();
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -27,17 +28,17 @@ export default function LoginPage() {
   };
 
   const onSubmit = async (data) => {
-    const { email, password } = data;
+    const { identifier, password } = data;
 
-    if (!isEmail(email)) {
+    if (!isEmail(identifier)) {
       toast.error("Invalid email");
       return;
     }
 
     try {
-      const response = await login({ email, password }).unwrap();
+      const response = await login({ identifier, password }).unwrap();
+      dispatch(addAdmin(response?.data));
       toast.success(response.msg || "Login successful");
-      setUser(true);
       router.push("/dashboard");
     } catch (err) {
       console.error("Login error:", err);
@@ -58,23 +59,31 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <input
-                id="email"
-                type="email"
+                id="identifier"
+                type="identifier"
                 className="w-full p-3 border border-gray-300 rounded mt-2 text-black"
                 placeholder="Enter your email"
-                {...register("email", { required: "Email is required" })}
+                {...register("identifier", { required: "Email is required" })}
               />
-              {errors.email && (
-                <p className="text-red-500 text-[12px] pl-1">{errors.email.message}</p>
+              {errors.identifier && (
+                <p className="text-red-500 text-[12px] pl-1">
+                  {errors.identifier.message}
+                </p>
               )}
             </div>
 
             <div className="mb-4 relative">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <input
@@ -85,7 +94,9 @@ export default function LoginPage() {
                 {...register("password", { required: "Password is required" })}
               />
               {errors.password && (
-                <p className="text-red-500 text-[12px] pl-1">{errors.password.message}</p>
+                <p className="text-red-500 text-[12px] pl-1">
+                  {errors.password.message}
+                </p>
               )}
               <span
                 onClick={togglePasswordVisibility}
@@ -102,7 +113,10 @@ export default function LoginPage() {
               <label htmlFor="rememberMe" className="text-xs text-gray-600">
                 Remember for 7 days
               </label>
-              <a href="#" className="ml-auto text-xs text-blue-500 hover:text-blue-700">
+              <a
+                href="#"
+                className="ml-auto text-xs text-blue-500 hover:text-blue-700"
+              >
                 Forgot password?
               </a>
             </div>

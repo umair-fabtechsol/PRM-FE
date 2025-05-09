@@ -13,6 +13,7 @@ const baseQuery = fetchBaseQuery({
 
 export const baseApi = createApi({
   baseQuery,
+  tagTypes: ["Partner", "TeamMember", "Tags"],
   endpoints: () => ({}),
 });
 export default baseApi;

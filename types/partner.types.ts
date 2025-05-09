@@ -7,4 +7,5 @@ export type PartnerType = {
   type: 'Partner' | 'Customer';
   tags: 'Red' | 'Blue' | 'Green';
   imageUrl: string;
+  userName: string;
 };

@@ -6,5 +6,6 @@ export type TeamMemberType = {
     tags: 'Red' | 'Blue' | 'Green';
     role: string;
     imageUrl: string;
+    userName: string;
   };
   
