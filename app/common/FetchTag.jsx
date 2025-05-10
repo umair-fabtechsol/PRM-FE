@@ -8,7 +8,7 @@ import { addTags } from "@/app/store/slices/tagSlice";
 
 export default function FetchTag() {
   const dispatch = useDispatch();
-  const { data: tagsList } = useGetTagListQuery();
+  const { data: tagsList, isLoading } = useGetTagListQuery();
 
   useEffect(() => {
     if (tagsList?.data?.data) {

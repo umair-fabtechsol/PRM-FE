@@ -6,5 +6,6 @@ export type CustomerType = {
     plan: string;
     tags: 'Red' | 'Blue' | 'Green';
     imageUrl: string;
+    userName: string;
   };
   

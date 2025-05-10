@@ -55,7 +55,7 @@ const page = () => {
             stroke="#2E2E2E"
             strokeWidth="1.5"
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
         </svg>
       ),
@@ -77,7 +77,7 @@ const page = () => {
             stroke="#2E2E2E"
             strokeWidth="1.5"
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
         </svg>
       ),
@@ -110,7 +110,7 @@ const page = () => {
             stroke="#2E2E2E"
             strokeWidth="1.5"
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
         </svg>
       ),
@@ -132,7 +132,7 @@ const page = () => {
             stroke="#2E2E2E"
             strokeWidth="1.5"
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
         </svg>
       ),
@@ -154,7 +154,7 @@ const page = () => {
             stroke="#2E2E2E"
             strokeWidth="1.5"
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
         </svg>
       ),
@@ -176,7 +176,7 @@ const page = () => {
             stroke="#2E2E2E"
             strokeWidth="1.5"
             strokeLinecap="round"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           />
         </svg>
       ),

@@ -5,6 +5,9 @@ import authReducer from "./slices/authSlice";
 import partnerReducer from "./slices/partnerSlice";
 import teamReducer from "./slices/teamSlice";
 import tagReducer from "./slices/tagSlice";
+import featureReducer from "./slices/featureSlice";
+import commissionReducer from "./slices/commissionSlice";
+import customerReducer from "./slices/customerSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +15,9 @@ export const store = configureStore({
     partner: partnerReducer,
     team: teamReducer,
     tag:tagReducer,
+    feature:featureReducer,
+    commission:commissionReducer,
+    customer:customerReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

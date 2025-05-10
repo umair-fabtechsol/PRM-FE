@@ -77,7 +77,7 @@ const Page = () => {
                   stroke="#4A4A4A"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
@@ -124,7 +124,7 @@ const Page = () => {
                   stroke="#2E2E2E"
                   stroke-width="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                 />
               </svg>
               Create Broadcast
@@ -145,7 +145,7 @@ const Page = () => {
                   stroke="white"
                   stroke-width="1.5"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                 />
               </svg>
               Create Task

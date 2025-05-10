@@ -6,11 +6,10 @@ import { useGetTeamMemberListQuery } from "@/app/store/apis/teamApis";
 import { useDispatch, useSelector } from "react-redux";
 import { addTeams } from "@/app/store/slices/teamSlice";
 import { RootState } from "@/app/store/store";
+import CustomLoader from "@/app/loader/CustomLoader";
 
 export default function TeamMembersTable() {
-  const {
-    data: teamMemberList,
-  } = useGetTeamMemberListQuery();
+  const { data: teamMemberList, isLoading } = useGetTeamMemberListQuery();
 
   const dispatch = useDispatch();
 
@@ -46,24 +45,6 @@ export default function TeamMembersTable() {
       },
       { key: "email" as keyof TeamMemberType, header: "Email Address" },
       { key: "contact" as keyof TeamMemberType, header: "Phone" },
-      // {
-      //   key: "tags" as keyof TeamMemberType,
-      //   header: "Tag",
-      //   render: (value: any) => {
-      //     const colorClasses: Record<string, string> = {
-      //       Red: "bg-red-100 text-red-500",
-      //       Blue: "bg-blue-100 text-blue-500",
-      //       Green: "bg-green-100 text-green-500",
-      //     };
-      //     return (
-      //       <span
-      //         className={`text-xs px-2 py-1 rounded-xl ${colorClasses[value]}`}
-      //       >
-      //         {value}
-      //       </span>
-      //     );
-      //   },
-      // },
       { key: "userType" as keyof TeamMemberType, header: "Role" },
       {
         key: "actions" as keyof TeamMemberType,
@@ -91,7 +72,7 @@ export default function TeamMembersTable() {
                 width={16}
                 height={16}
                 src="/icons/edit.png"
-                alt="Delete Icon"
+                alt="Edit Icon"
               />
             </button>
           </div>
@@ -99,24 +80,36 @@ export default function TeamMembersTable() {
       },
     ];
   }, []);
+
+  if (isLoading) {
+    <CustomLoader />;
+  }
+
   return (
-    <Table
-      columns={columns}
-      data={teams}
-      // TODO: create reusable pagination and use that
-      bottomContent={
-        <div className="flex justify-between items-center w-full">
-          <div className="flex space-x-4 items-center">
-            <button className="px-3 py-1.5 bg-white text-gray-600 text-sm rounded-lg shadow hover:bg-gray-50 transition">
-              Previous
-            </button>
-            <button className="px-3 py-1.5 bg-white text-gray-600 text-sm rounded-lg shadow hover:bg-gray-50 transition">
-              Next
-            </button>
-          </div>
-          <div className="text-gray-600 text-sm text-right">Page 1 of 5</div>
-        </div>
-      }
-    />
+    <div>
+      {isLoading ? (
+        <CustomLoader />
+      ) : (
+        <Table
+          columns={columns}
+          data={teams}
+          bottomContent={
+            <div className="flex justify-between items-center w-full">
+              <div className="flex space-x-4 items-center">
+                <button className="px-3 py-1.5 bg-white text-gray-600 text-sm rounded-lg shadow hover:bg-gray-50 transition">
+                  Previous
+                </button>
+                <button className="px-3 py-1.5 bg-white text-gray-600 text-sm rounded-lg shadow hover:bg-gray-50 transition">
+                  Next
+                </button>
+              </div>
+              <div className="text-gray-600 text-sm text-right">
+                Page 1 of 5
+              </div>
+            </div>
+          }
+        />
+      )}
+    </div>
   );
 }

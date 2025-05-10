@@ -1,12 +1,12 @@
 "use client";
 import CustomLoader from "@/app/loader/CustomLoader";
-import { useAddFeatureMutation } from "@/app/store/apis/featureApis";
+import { useAddTagMutation } from "@/app/store/apis/tagApis";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const FeatureModal = ({ isOpen, closeModal }) => {
-  const [addFeature, { isLoading }] = useAddFeatureMutation();
+const AddTagModal = ({ isOpen, closeModal }) => {
+  const [addTag, { isLoading }] = useAddTagMutation();
 
   const {
     register,
@@ -17,13 +17,13 @@ const FeatureModal = ({ isOpen, closeModal }) => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await addFeature({ name: data.featureName }).unwrap();
-      toast.success(response?.msg || "Feature Added Successfully.");
+      const response = await addTag(data).unwrap();
+      toast.success(response?.msg || "Tag Added Successfully.");
       reset();
       closeModal();
     } catch (error) {
-      console.error("Error adding feature:", error);
-      toast.error(error?.msg || "Failed To Add Feature.");
+      console.error("Error adding Tag:", error);
+      toast.error(error?.msg || "Failed To Add Tag.");
     }
   };
 
@@ -47,7 +47,7 @@ const FeatureModal = ({ isOpen, closeModal }) => {
                   id="hs-small-modal-label"
                   className="font-bold text-gray-800 dark:text-white"
                 >
-                  New Feature
+                  Add New Tag
                 </h3>
               </div>
               <form
@@ -58,22 +58,22 @@ const FeatureModal = ({ isOpen, closeModal }) => {
                 <div className="mb-4">
                   <label
                     className="block text-[#2E2E2E] font-Inter text-sm font-bold mb-2"
-                    htmlFor="feature-name"
+                    htmlFor="tag-name"
                   >
-                    Feature Name
+                    Tag Name
                   </label>
                   <input
-                    id="feature-name"
+                    id="tag-name"
                     type="text"
-                    placeholder="Enter Feature Name"
-                    {...register("featureName", {
-                      required: "Feature name is required",
+                    placeholder="Enter Tag Name"
+                    {...register("tagName", {
+                      required: "Tag name is required",
                     })}
                     className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
-                  {errors.featureName && (
+                  {errors.tagName && (
                     <p className="text-red-500 text-xs mt-1">
-                      {errors.featureName.message}
+                      {errors.tagName.message}
                     </p>
                   )}
                 </div>
@@ -106,4 +106,4 @@ const FeatureModal = ({ isOpen, closeModal }) => {
   );
 };
 
-export default FeatureModal;
+export default AddTagModal;

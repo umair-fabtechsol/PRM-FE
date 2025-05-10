@@ -6,12 +6,13 @@ import { useGetPartnerListQuery } from "@/app/store/apis/partnerApis";
 import { useDispatch, useSelector } from "react-redux";
 import { addPartner } from "@/app/store/slices/partnerSlice";
 import { RootState } from "@/app/store/store";
+import CustomLoader from "@/app/loader/CustomLoader";
 
 type Props = {
   onPartnerDelete: (partnerId: string) => void;
 };
 export default function PartnersTable({ onPartnerDelete }: Props) {
-  const { data: partnerList } = useGetPartnerListQuery();
+  const { data: partnerList, isLoading } = useGetPartnerListQuery();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -96,23 +97,30 @@ export default function PartnersTable({ onPartnerDelete }: Props) {
     ];
   }, [onPartnerDelete]);
   return (
-    <Table
-      columns={columns}
-      data={partners}
-      // TODO: create reusable pagination and use that
-      bottomContent={
-        <div className="flex justify-between items-center w-full">
-          <div className="flex space-x-4 items-center">
-            <button className="px-3 py-1.5 bg-white text-gray-600 text-sm rounded-lg shadow hover:bg-gray-50 transition">
-              Previous
-            </button>
-            <button className="px-3 py-1.5 bg-white text-gray-600 text-sm rounded-lg shadow hover:bg-gray-50 transition">
-              Next
-            </button>
-          </div>
-          <div className="text-gray-600 text-sm text-right">Page 1 of 5</div>
-        </div>
-      }
-    />
+    <div>
+      {isLoading ? (
+        <CustomLoader />
+      ) : (
+        <Table
+          columns={columns}
+          data={partners}
+          bottomContent={
+            <div className="flex justify-between items-center w-full">
+              <div className="flex space-x-4 items-center">
+                <button className="px-3 py-1.5 bg-white text-gray-600 text-sm rounded-lg shadow hover:bg-gray-50 transition">
+                  Previous
+                </button>
+                <button className="px-3 py-1.5 bg-white text-gray-600 text-sm rounded-lg shadow hover:bg-gray-50 transition">
+                  Next
+                </button>
+              </div>
+              <div className="text-gray-600 text-sm text-right">
+                Page 1 of 5
+              </div>
+            </div>
+          }
+        />
+      )}
+    </div>
   );
 }
