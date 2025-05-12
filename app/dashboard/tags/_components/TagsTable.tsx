@@ -12,23 +12,23 @@ export default function TagsTable() {
     return [
       { key: "tagName" as keyof TagsType, header: "Tag Name" },
       { key: "description" as keyof TagsType, header: "Description" },
-      { key: "role" as keyof TagsType, header: "Role" },
+      { key: "tagType" as keyof TagsType, header: "Tag Type" },
       {
         key: "tagColor" as keyof TagsType,
         header: "Color",
         render: (value: string) => (
-          <td className="px-4 py-3 text-gray-700 text-sm flex items-center space-x-2 whitespace-nowrap">
+          <div className="flex items-center space-x-2">
             <div
               className="w-8 h-8 rounded-full border"
               style={{ backgroundColor: value }}
             ></div>
             <span className="px-2 text-xs">{value}</span>
-          </td>
+          </div>
         ),
       },
       {
         key: "actions" as keyof TagsType,
-        header: "",
+        header: "Actions",
         render: () => (
           <div className="flex space-x-2">
             <button className="text-gray-700 hover:text-blue-700">

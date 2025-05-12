@@ -24,6 +24,6 @@
     ],
     "noImplicitAny": true
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "app/common/FetchTag.jsx"],
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "app/common/FetchTag.jsx", "app/dashboard/tags/_components/AddTagModal.js", "app/auth/Auth.jsx"],
   "exclude": ["node_modules"]
 }

@@ -19,6 +19,6 @@ const tagSlice = createSlice({
 
 export const { addTags } = tagSlice.actions;
 
-export const selectPartners = (state: RootState) => state.tag.tags;
+export const selectTags = (state: RootState) => state.tag.tags;
 
 export default tagSlice.reducer;

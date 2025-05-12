@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import isEmail from "validator/lib/isEmail";
@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useLoginMutation } from "../store/apis/authApis";
 import { useDispatch } from "react-redux";
 import { addAdmin } from "../store/slices/authSlice";
+import CustomLoader from "../loader/CustomLoader";
 
 export default function LoginPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -45,6 +46,14 @@ export default function LoginPage() {
       toast.error(err?.data?.msg || "Login failed");
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      router.replace("/dashboard");
+    }
+  }, [router]);
 
   return (
     <div className="flex w-full h-screen">
@@ -120,13 +129,17 @@ export default function LoginPage() {
                 Forgot password?
               </a>
             </div>
-
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300"
+              className={`w-full p-3 bg-blue-500 text-white rounded-md transition-all duration-300 flex items-center justify-center gap-2 ${
+                isLoading
+                  ? "cursor-not-allowed opacity-80"
+                  : "hover:bg-blue-600"
+              }`}
             >
-              {isLoading ? "Logging in..." : "Login"}
+              {isLoading && <CustomLoader />}
+              <span>{isLoading ? "Logging in..." : "Login"}</span>
             </button>
           </form>
         </div>

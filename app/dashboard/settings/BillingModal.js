@@ -113,7 +113,7 @@ const BillingModal = ({ isOpen, closeModal }) => {
                               stroke="#4A4A4A"
                               strokeWidth="2"
                               strokeLinecap="round"
-                              stroke-linejoin="round"
+                              strokeLinejoin="round"
                             />
                           </svg>
                         </div>

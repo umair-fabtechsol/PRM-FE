@@ -53,3 +53,7 @@ body {
 .fc-timegrid-slot {
   height: 50px !important; /* Customize this to your preferred height */
 }
+
+input {
+  outline: none;
+}

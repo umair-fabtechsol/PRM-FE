@@ -19,6 +19,6 @@ const teamSlice = createSlice({
 
 export const { addTeams } = teamSlice.actions;
 
-export const selectPartners = (state: RootState) => state.team.teamMembers;
+export const selectTeams = (state: RootState) => state.team.teamMembers;
 
 export default teamSlice.reducer;
