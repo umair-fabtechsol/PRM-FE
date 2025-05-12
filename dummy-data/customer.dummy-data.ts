@@ -7,4 +7,5 @@ export const CUSTOMER_LIST: CustomerType[] = Array.from({ length: 5 }, (_, index
   plan: `Tech Company ${index}`,
   tags: index % 3 === 0 ? 'Red' : index % 3 === 1 ? 'Blue' : 'Green',
   imageUrl: '/images/image.jpg',
+  userName:"jhon Doe"
 }));
