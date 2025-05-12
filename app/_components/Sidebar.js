@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import PrivateRoute from "@/app/_components/PrivateRoute";
 import {
@@ -14,7 +14,6 @@ import {
   FaCalendarAlt,
   FaChartLine,
   FaWallet,
-  FaShieldAlt,
   FaComments,
   FaCogs,
   FaSignOutAlt,
@@ -22,54 +21,123 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import CustomLoader from "../loader/CustomLoader";
 import { toast } from "react-toastify";
+import { ROLES } from "../constants/roles.constant";
+import { useMemo } from "react";
+import Image from "next/image";
 
 const Sidebar = () => {
   const [active, setActive] = useState("Dashboard");
   const [logoutOpen, setLogoutOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
-
+  const [user, setUser] = useState(null);
+  const [filteredLinks, setFilteredLinks] = useState(null);
 
   const router = useRouter();
-
-  //this is for getting path name
   const pathname = usePathname();
 
-  const links = [
-    { name: "Dashboard", icon: <FaHome />, path: "/dashboard" },
-    { name: "Partners", icon: <FaUsers />, path: "/dashboard/partners" },
-    {
-      name: "Commissions",
-      icon: <FaPercentage />,
-      path: "/dashboard/commissions",
-    },
-    { name: "Campaign", icon: <FaBullhorn />, path: "/dashboard/campaigns" },
-    {
-      name: "Team Members",
-      icon: <FaUserFriends />,
-      path: "/dashboard/teammember",
-    },
-    { name: "Customers", icon: <FaUserCircle />, path: "/dashboard/customers" },
-    { name: "Tags", icon: <FaTag />, path: "/dashboard/tags" },
-    { name: "Calendar", icon: <FaCalendarAlt />, path: "/dashboard/calender" },
-    {
-      name: "Report & Analytics",
-      icon: <FaChartLine />,
-      path: "/dashboard/reportandanlytic",
-    },
-    { name: "Payouts", icon: <FaWallet />, path: "/dashboard/payouts" },
-    // {
-    //   name: 'Role & Permissions',
-    //   icon: <FaShieldAlt />,
-    //   path: '/dashboard/roleandpermision',
-    // },
-    {
-      name: "Communication",
-      icon: <FaComments />,
-      path: "/dashboard/communication",
-    },
-    { name: "Settings", icon: <FaCogs />, path: "/dashboard/settings" },
-    { name: "Logout", icon: <FaSignOutAlt />, path: "#" },
-  ];
+  const links = useMemo(
+    () => [
+      {
+        name: "Dashboard",
+        icon: <FaHome />,
+        path: "/dashboard",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+      },
+      {
+        name: "Partners",
+        icon: <FaUsers />,
+        path: "/dashboard/partners",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
+      },
+      {
+        name: "Commissions",
+        icon: <FaPercentage />,
+        path: "/dashboard/commissions",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
+      },
+      {
+        name: "Campaign",
+        icon: <FaBullhorn />,
+        path: "/dashboard/campaigns",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+      },
+      {
+        name: "Team Members",
+        icon: <FaUserFriends />,
+        path: "/dashboard/teammember",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
+      },
+      {
+        name: "Customers",
+        icon: <FaUserCircle />,
+        path: "/dashboard/customers",
+        roles: [ROLES.SUPER_ADMIN],
+      },
+      {
+        name: "Tags",
+        icon: <FaTag />,
+        path: "/dashboard/tags",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
+      },
+      {
+        name: "Calendar",
+        icon: <FaCalendarAlt />,
+        path: "/dashboard/calender",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+      },
+      {
+        name: "Report & Analytics",
+        icon: <FaChartLine />,
+        path: "/dashboard/reportandanlytic",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+      },
+      {
+        name: "Payouts",
+        icon: <FaWallet />,
+        path: "/dashboard/payouts",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+      },
+      {
+        name: "Communication",
+        icon: <FaComments />,
+        path: "/dashboard/communication",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+      },
+      {
+        name: "Settings",
+        icon: <FaCogs />,
+        path: "/dashboard/settings",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+      },
+      {
+        name: "Logout",
+        icon: <FaSignOutAlt />,
+        path: "#",
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+      },
+    ],
+    []
+  );
+
+  useEffect(() => {
+    const currentUser = localStorage.getItem("user");
+
+    if (currentUser) {
+      try {
+        const parsedUser = JSON.parse(currentUser);
+        setUser(parsedUser);
+
+        const userRole = parsedUser?.role;
+        const sidebarLinks = links.filter((link) =>
+          link.roles.includes(userRole)
+        );
+
+        setFilteredLinks(sidebarLinks);
+      } catch (error) {
+        console.error("Invalid user JSON", error);
+      }
+    }
+  }, [links]);
 
   return (
     <PrivateRoute>
@@ -80,8 +148,8 @@ const Sidebar = () => {
         >
           <div className="bg-white w-[350px] rounded-lg p-6 shadow-lg relative">
             <div className="flex justify-left my-2 text-red-500">
-              <img
-                src="/icons/logout.png"
+              <Image
+                src={"/icons/logout.png"}
                 alt="Add Widget"
                 className="mr-2"
                 width={60}
@@ -162,7 +230,7 @@ const Sidebar = () => {
             </li>
           ))} */}
 
-          {links.map((link) => (
+          {filteredLinks?.map((link) => (
             <Link
               key={link.name}
               href={link.path}

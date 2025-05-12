@@ -12,7 +12,7 @@ export default function TagsTable() {
     return [
       { key: "tagName" as keyof TagsType, header: "Tag Name" },
       { key: "description" as keyof TagsType, header: "Description" },
-      { key: "role" as keyof TagsType, header: "Role" },
+      { key: "tagType" as keyof TagsType, header: "Tag Type" },
       {
         key: "tagColor" as keyof TagsType,
         header: "Color",

@@ -9,9 +9,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import CustomLoader from "@/app/loader/CustomLoader";
+import PhoneInput from "react-phone-number-input";
+import 'react-phone-number-input/style.css';
 
 export default function AddTeamMember() {
   const [image, setImage] = useState(null);
+  const [phone, setPhone] = useState("");
   const [addCustomer, { isLoading }] = useAddCustomerMutation();
   const tags = useSelector((state) => state?.tag?.tags);
   const router = useRouter();
@@ -24,11 +27,21 @@ export default function AddTeamMember() {
   } = useForm();
 
   const onSubmit = async (data) => {
+    if (!phone) {
+      toast.error("Phone number is required");
+      return;
+    }
+
     try {
+      // Extract country code with "+"
+      const match = phone.match(/^(\+\d{1,4})/);
+      const countryCode = match ? match[1] : "";
+
       const payload = {
         ...data,
+        phone, // full international number
+        countryCode, // e.g., "+1", "+91", "+971"
         name: `${data.firstName} ${data.lastName}`,
-        // profileImage: image,
       };
       delete payload.firstName;
       delete payload.lastName;
@@ -36,6 +49,7 @@ export default function AddTeamMember() {
       const response = await addCustomer(payload).unwrap();
       toast.success(response.msg || "Customer Added Successfully.");
       reset();
+      setPhone("");
       router.push("/dashboard/customers");
     } catch (error) {
       console.error("Failed to add customer:", error);
@@ -197,18 +211,21 @@ export default function AddTeamMember() {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="phone" className="text-gray-700 text-sm">
+              <label htmlFor="phone" className="text-gray-700 text-sm mb-1">
                 Phone
               </label>
-              <input
+              <PhoneInput
                 id="phone"
-                type="text"
-                {...register("phone", { required: "Phone number is required" })}
-                placeholder="Phone"
-                className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
+                international
+                defaultCountry="US"
+                value={phone}
+                onChange={setPhone}
+                className="react-phone-input w-full border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm bg-white focus:outline-none focus:ring-0 focus:border-transparent"
               />
-              {errors.phone && (
-                <p className="text-red-500 text-xs">{errors.phone.message}</p>
+              {!phone && (
+                <p className="text-red-500 text-xs mt-1">
+                  Phone number is required
+                </p>
               )}
             </div>
 

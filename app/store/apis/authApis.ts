@@ -12,11 +12,10 @@ export const authApis = baseApi.injectEndpoints({
         const { data } = await queryFulfilled;
         const token = data?.data?.token;
         localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(data?.data?.user));
       },
     }),
   }),
 });
 
-export const {
-  useLoginMutation,
-} = authApis;
+export const { useLoginMutation } = authApis;
