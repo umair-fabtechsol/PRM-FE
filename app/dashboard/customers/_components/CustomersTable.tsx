@@ -2,7 +2,6 @@ import Table from "@/app/_components/ui/Table";
 import Image from "next/image.js";
 import React, { useEffect } from "react";
 import { CustomerType } from "@/types";
-import { CUSTOMER_LIST } from "@/dummy-data";
 import { useGetCustomerListQuery } from "@/app/store/apis/customerApis";
 import { useDispatch, useSelector } from "react-redux";
 import { addCustomer } from "@/app/store/slices/customerSlice";

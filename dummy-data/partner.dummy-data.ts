@@ -9,4 +9,5 @@ export const PARTNERS_LIST: PartnerType[] = Array.from({ length: 5 }, (_, index)
   type: index % 2 === 0 ? 'Partner' : 'Customer',
   tags: index % 3 === 0 ? 'Red' : index % 3 === 1 ? 'Blue' : 'Green',
   imageUrl: '/images/image.jpg',
+  userName:"user"
 }));
