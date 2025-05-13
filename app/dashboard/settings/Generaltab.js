@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Generaltab = ({ activetab }) => {
@@ -69,11 +70,9 @@ const Generaltab = ({ activetab }) => {
                   Profile picture
                 </label>
                 <div className="relative">
-                  <img
-                    src="/Profile Picture.png"
+                  <Image  src="/Profile Picture.png"
                     alt="Profile picture of a person in a suit"
-                    className="w-48 h-48 rounded-full object-cover"
-                  />
+                    className="w-48 h-48 rounded-full object-cover" width={40} height={40} />
                   <button className="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-md">
                     <i className="fas fa-pen"></i>
                   </button>

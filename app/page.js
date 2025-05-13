@@ -1,99 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import isEmail from "validator/lib/isEmail";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "./context/AuthContext";
 import Link from "next/link";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import CustomLoader from "./loader/CustomLoader";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { useLoginMutation } from "./store/apis/authApis";
+import { addAdmin } from "./store/slices/authSlice";
 
 export default function Home() {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
-
-  //this is making router
   const router = useRouter();
+  const dispatch = useDispatch();
+  const pathname = usePathname();
 
-  //this is for getting data from hook
-  const { setUser, active, setActive } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  //this is for show password
+  const [login, { isLoading }] = useLoginMutation();
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  //this is for catch errors
-  const forCatchErrors = () => {
-    let isOk = true;
-    const newErrors = {};
+  const onSubmit = async (data) => {
+    const { identifier, password } = data;
 
-    if (!email.trim()) {
-      newErrors.email = "Please Enter Email";
-      isOk = false;
-      toast.error("Please Enter Email");
-    } else if (!isEmail(email)) {
-      newErrors.email = "Invalid email";
-      isOk = false;
+    if (!isEmail(identifier)) {
       toast.error("Invalid email");
-    } else if (!password.trim()) {
-      newErrors.password = "please Enter Password";
-      isOk = false;
-      toast.error("please Enter Password");
+      return;
     }
 
-    setErrors(newErrors);
-    return isOk;
-  };
-
-  //this is for go to dashbord
-  const forClickOnLoginButton = () => {
-    if (forCatchErrors()) {
+    try {
+      const response = await login({ identifier, password }).unwrap();
+      dispatch(addAdmin(response?.data));
+      toast.success(response.msg || "Login successful");
       router.push("/dashboard");
+    } catch (err) {
+      console.error("Login error:", err);
+      toast.error(err?.data?.msg || "Login failed");
     }
   };
 
-  //this is for login
-  const forLoginUser = async (e) => {
-    e.preventDefault();
-    if (forCatchErrors()) {
-      const formData = {
-        email,
-        password,
-      };
+  
 
-      console.log("ok data", formData);
-
-      const url = `/api/users`;
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      };
-
-      try {
-        const response = await fetch(url, options);
-        console.log("response ", response);
-        const data = await response.json();
-        if (response.ok) {
-          console.log("ok data", data);
-          toast.success(data.msg);
-          router.push("/dashboard");
-          setUser(true);
-        } else {
-          console.log("err data", data);
-          toast.error(data.msg);
-        }
-      } catch (err) {
-        console.log("there is error in the add user function", err);
-      }
+  useEffect(()=>{
+    if(pathname === "/login"){
+      router.replace("/")
     }
-  };
+  },[pathname, router])
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      router.replace("/dashboard");
+    }
+  }, [router]);
 
   return (
     <div className="flex w-full h-screen">
@@ -102,11 +74,11 @@ export default function Home() {
           <h2 className="text-1xl sm:text-3xl text-black font-bold mb-2">
             Welcome Back 👋
           </h2>
-          <p className=" mb-8 text-gray-600 text-xs sm:text-sm">
+          <p className="mb-8 text-gray-600 text-xs sm:text-sm">
             Welcome Back! Please enter your details
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -115,76 +87,71 @@ export default function Home() {
                 Email
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                onChange={(e) => setEmail(e.target.value)}
+                id="identifier"
+                type="identifier"
                 className="w-full p-3 border border-gray-300 rounded mt-2 text-black"
                 placeholder="Enter your email"
+                {...register("identifier", { required: "Email is required" })}
               />
-
-              {errors.email && (
-                <p className="text-red-500 text-[12px] pl-1">{errors.email}</p>
-              )}
-            </div>
-            <div className="mb-4">
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Password
-                </label>
-                <div className="relative">
-                  <input
-                    type={passwordVisible ? "text" : "password"}
-                    onChange={(e) => setPassword(e.target.value)}
-                    id="password"
-                    name="password"
-                    className="w-full p-3 pr-12 border border-gray-300 rounded mt-2 text-black"
-                    placeholder="Enter your password"
-                  />
-
-                  <span
-                    onClick={togglePasswordVisibility}
-                    className="absolute right-3 top-0 bottom-0 flex items-center cursor-pointer text-black"
-                  >
-                    {passwordVisible ? <FaEyeSlash /> : <FaEye />}
-                  </span>
-                </div>
-              </div>
-
-              {errors.password && (
+              {errors.identifier && (
                 <p className="text-red-500 text-[12px] pl-1">
-                  {errors.password}
+                  {errors.identifier.message}
                 </p>
               )}
             </div>
 
-            <div className="mb-6 flex items-center">
+            <div className="mb-4 relative">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Password
+              </label>
               <input
-                type="checkbox"
-                id="rememberMe"
-                name="rememberMe"
-                className="mr-2"
+                id="password"
+                type={passwordVisible ? "text" : "password"}
+                className="w-full p-3 border border-gray-300 rounded mt-2 text-black"
+                placeholder="Enter your password"
+                {...register("password", { required: "Password is required" })}
               />
+              {errors.password && (
+                <p className="text-red-500 text-[12px] pl-1">
+                  {errors.password.message}
+                </p>
+              )}
+              <span
+                onClick={togglePasswordVisibility}
+                className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 ${
+                  passwordVisible ? "text-blue-500" : ""
+                }`}
+              >
+                {passwordVisible ? "🙈" : "👁️"}
+              </span>
+            </div>
+
+            <div className="mb-6 flex items-center">
+              <input type="checkbox" id="rememberMe" className="mr-2" />
               <label htmlFor="rememberMe" className="text-xs text-gray-600">
                 Remember for 7 days
               </label>
-              <Link
-                href="/forgotpassword"
+              <a
+                href="#"
                 className="ml-auto text-xs text-blue-500 hover:text-blue-700"
               >
                 Forgot password?
-              </Link>
+              </a>
             </div>
-
             <button
-              onClick={forClickOnLoginButton}
-              type="button"
-              className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none transition-all ease-in-out duration-300"
+              type="submit"
+              disabled={isLoading}
+              className={`w-full p-3 bg-blue-500 text-white rounded-md transition-all duration-300 flex items-center justify-center gap-2 ${
+                isLoading
+                  ? "cursor-not-allowed opacity-80"
+                  : "hover:bg-blue-600"
+              }`}
             >
-              Login
+              {isLoading && <CustomLoader />}
+              <span>{isLoading ? "Logging in..." : "Login"}</span>
             </button>
           </form>
         </div>

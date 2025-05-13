@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const PaymentProcessors = () => {
@@ -39,7 +40,7 @@ const PaymentProcessors = () => {
               <div className="bg-[#ebf0fa] rounded-full p-2">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                   <span className="text-blue-600 text-2xl font-bold">
-                    <img src="/paypal-svgrepo-com.svg" />
+                    <Image src="/paypal-svgrepo-com.svg" alt="paypal" width={40} height={40} />
                   </span>
                 </div>
               </div>
