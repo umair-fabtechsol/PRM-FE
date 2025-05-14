@@ -20,7 +20,6 @@ export default function FeatureTable() {
   }, [featureList, dispatch]);
 
   const features = useSelector((state: RootState) => state.feature.features);
-  console.log("===========f", featureList);
 
   const columns = React.useMemo(() => {
     return [

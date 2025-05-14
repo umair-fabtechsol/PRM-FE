@@ -115,11 +115,7 @@ const Sidebar = () => {
         name: "Payouts",
         icon: <FaWallet />,
         path: "/dashboard/payouts",
-        roles: [
-          ROLES.SUPER_ADMIN,
-          ROLES.ADMIN,
-          ROLES.PARTNER,
-        ],
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
       },
       {
         name: "Communication",
@@ -182,7 +178,7 @@ const Sidebar = () => {
     <PrivateRoute>
       {logoutOpen && (
         <div
-          className="z-[9999] fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
           style={{ pointerEvents: "auto" }}
         >
           <div className="bg-white w-[350px] rounded-lg p-6 shadow-lg relative">
@@ -235,30 +231,27 @@ const Sidebar = () => {
         </div>
       )}
 
-      <div className="flex bg-white flex-col border-r h-full p-2 ">
+      <div className="flex flex-col bg-white border-r h-full p-2">
         <div className="text-xl text-blue-500 font-bold mb-6">Logo</div>
 
-        <ul
-          className="overflow-y-auto"
-          style={{
-            scrollbarWidth: "none",
-            WebkitScrollbar: "none",
-          }}
+        {/* All non-logout links in scrollable area */}
+        <div
+          className="flex flex-col flex-grow overflow-y-auto"
+          style={{ scrollbarWidth: "none", WebkitScrollbar: "none" }}
         >
-          {/* {links.map((link) => (
-            <li
-              key={link.name}
-              className={`flex items-center p-3 mb-4 rounded-lg cursor-pointer
-              ${pathname === link.path ? "bg-blue-500 text-white" : ""}`}
-              onClick={(e) => {
-                e.preventDefault();
-                if (link.name === "Logout") {
-                  setLogoutOpen(true);
-                }
-                setActive(link.name);
-              }}
-            >
-              <Link href={link.path}>
+          {filteredLinks
+            ?.filter((link) => link.name !== "Logout")
+            .map((link) => (
+              <Link
+                key={link.name}
+                href={link.path}
+                className={`flex items-center p-3 mb-4 rounded-lg cursor-pointer ${
+                  pathname === link.path
+                    ? "bg-blue-500 text-white"
+                    : "text-black"
+                }`}
+                onClick={() => setActive(link.name)}
+              >
                 <div className="flex items-center w-full">
                   <div className="text-xl">{link.icon}</div>
                   <span className="ml-3 lg:inline-block hidden">
@@ -266,31 +259,22 @@ const Sidebar = () => {
                   </span>
                 </div>
               </Link>
-            </li>
-          ))} */}
+            ))}
+        </div>
 
-          {filteredLinks?.map((link) => (
-            <Link
-              key={link.name}
-              href={link.path}
-              className={`flex items-center p-3 mb-4 rounded-lg cursor-pointer
-      ${pathname === link.path ? "bg-blue-500 text-white" : ""}`}
-              onClick={(e) => {
-                if (link.name === "Logout") {
-                  e.preventDefault(); // Logout ka modal dikhane ke liye prevent default
-                  setLogoutOpen(true);
-                  return;
-                }
-                setActive(link.name); // Active state ko set karna
-              }}
-            >
-              <div className="flex items-center w-full">
-                <div className="text-xl">{link.icon}</div>
-                <span className="ml-3 lg:inline-block hidden">{link.name}</span>
+        {filteredLinks?.find((link) => link.name === "Logout") && (
+          <button
+            className="flex items-center p-3 rounded-lg cursor-pointer text-black hover:bg-gray-100"
+            onClick={() => setLogoutOpen(true)}
+          >
+            <div className="flex items-center w-full">
+              <div className="text-xl">
+                <FaSignOutAlt />
               </div>
-            </Link>
-          ))}
-        </ul>
+              <span className="ml-3 lg:inline-block hidden">Logout</span>
+            </div>
+          </button>
+        )}
       </div>
     </PrivateRoute>
   );

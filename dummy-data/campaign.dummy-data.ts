@@ -8,6 +8,6 @@ export const CAMPAIGN_LIST: CampaignType[] = Array.from(
     startDate: `sep 30, 2024`,
     endDate: `sep 31, 2025`,
     revenew: `$123,455`,
-    imageUrl: "/images/image.jpg",
+    imageUrl: "/images/avatar.png",
   })
 );

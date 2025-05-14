@@ -6,6 +6,6 @@ export const TEAMMEMBER_LIST: TeamMemberType[] = Array.from({ length: 5 }, (_, i
   phone: `+123456789${index}`,
   tags: index % 3 === 0 ? 'Red' : index % 3 === 1 ? 'Blue' : 'Green',
   role: `Admin`,
-  imageUrl: '/images/image.jpg',
+  imageUrl: '/images/avatar.png',
   userName:"user"
 }));

@@ -97,25 +97,6 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="role" className="text-gray-700 text-sm">
-              Select Role
-            </label>
-            <select
-              id="role"
-              {...register("role", { required: "Role is required" })}
-              className="w-full outline-none bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-black text-sm"
-            >
-              <option value="">Select Role</option>
-              <option value="partner">Partner</option>
-            </select>
-            {errors.role && (
-              <span className="text-red-500 text-sm">
-                {errors.role.message}
-              </span>
-            )}
-          </div>
-
-          <div className="flex flex-col">
             <label htmlFor="email" className="text-gray-700 text-sm">
               Email
             </label>

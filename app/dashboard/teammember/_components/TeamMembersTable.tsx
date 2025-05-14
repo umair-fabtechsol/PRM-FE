@@ -31,7 +31,7 @@ export default function TeamMembersTable() {
             <Image
               width={32}
               height={32}
-              src={"/images/image.jpg"}
+              src={"/images/avatar.png"}
               alt="User"
               className="rounded-full"
             />

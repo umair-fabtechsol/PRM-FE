@@ -51,13 +51,11 @@ export default function Home() {
     }
   };
 
-  
-
-  useEffect(()=>{
-    if(pathname === "/login"){
-      router.replace("/")
+  useEffect(() => {
+    if (pathname === "/login") {
+      router.replace("/");
     }
-  },[pathname, router])
+  }, [pathname, router]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -121,11 +119,9 @@ export default function Home() {
               )}
               <span
                 onClick={togglePasswordVisibility}
-                className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 ${
-                  passwordVisible ? "text-blue-500" : ""
-                }`}
+                className="absolute right-3 top-0 bottom-0 flex items-center cursor-pointer text-black"
               >
-                {passwordVisible ? "🙈" : "👁️"}
+                {passwordVisible ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
 

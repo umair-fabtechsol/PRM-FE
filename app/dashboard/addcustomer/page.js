@@ -83,7 +83,7 @@ export default function AddTeamMember() {
             <div className="flex items-end">
               <div className="w-24 h-24 rounded-full border border-gray-300 bg-gray-200 overflow-hidden">
                 <Image
-                  src={image || "/images/image.jpg"}
+                  src={image || "/images/avatar.png"}
                   alt="Profile"
                   className="object-cover w-full h-full"
                   width={150}

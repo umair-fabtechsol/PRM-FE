@@ -1,30 +1,54 @@
 "use client";
+import CustomLoader from "@/app/loader/CustomLoader";
+import { useCreateTaskMutation } from "@/app/store/apis/calendarApis";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
-  const { register, handleSubmit, watch, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const [createTask, { isLoading }] = useCreateTaskMutation();
 
-  const onSubmit = (data) => {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Month is 0-based
-    const day = String(currentDate.getDate()).padStart(2, "0");
+  const onSubmit = async (data) => {
+    try {
+      console.log("===========>data :", data);
 
-    // Construct startTime and endTime in UTC
-    const startTime = `${year}-${month}-${day}T${data.startTime}:00.000Z`;
-    const endTime = `${year}-${month}-${day}T${data.endTime}:00.000Z`;
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+      const day = String(currentDate.getDate()).padStart(2, "0");
 
-    console.log(startTime, endTime);
+      const startTime = `${year}-${month}-${day}T${data.startTime}:00.000Z`;
+      const endTime = `${year}-${month}-${day}T${data.endTime}:00.000Z`;
 
-    setTaskModalData({ ...data, startTime, endTime });
+      console.log(startTime, endTime);
 
-    reset();
-    closeModal();
+      const taskData = { ...data, startTime, endTime };
+
+      setTaskModalData(taskData);
+
+      // const response = await createTask(taskData).unwrap();
+
+      // toast.success(response?.message || "Task Created Successfully.");
+
+      reset();
+
+      closeModal();
+    } catch (error) {
+      console.log("Error while creating task", error?.message);
+      toast.error(error?.message || "Failed To Create Task.");
+    }
   };
 
   return (
     <div>
+      {isLoading && <CustomLoader />}
       {isOpen && (
         <div
           id="hs-small-modal"
@@ -99,14 +123,40 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                 <div className="mb-4">
                   <label className="block text-gray-700">Task Name</label>
                   <div className="flex items-center">
-                    <input
-                      {...register("taskName", { required: true })}
-                      type="text"
-                      className="flex-grow border rounded-md p-2"
-                      placeholder="New Task"
-                    />
+                    <div className="flex flex-col">
+                      <input
+                        {...register("taskName", {
+                          required: "Task name is required",
+                        })}
+                        type="text"
+                        className="flex-grow border rounded-md p-2"
+                        placeholder="New Task"
+                      />
+                      {errors.taskName && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors.taskName.message}
+                        </p>
+                      )}
+                    </div>
+
                     <div className="ml-2 flex items-center">
-                      <div className="w-10 h-10 rounded-full p-0 border-none cursor-pointer bg-blue-600"></div>
+                      <div className="relative w-10 h-10">
+                        <label
+                          className="block w-full h-full rounded-full cursor-pointer"
+                          style={{
+                            backgroundColor: watch("color") || "#3366CC",
+                          }}
+                        >
+                          <input
+                            type="color"
+                            {...register("color", {
+                              required: "Color is required",
+                            })}
+                            defaultValue="#3366CC"
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                          />
+                        </label>
+                      </div>
                       <button className="ml-2 text-gray-500 ">
                         <svg
                           width="48"
@@ -133,8 +183,8 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                               stroke="#CCCCCC"
                             />
                             <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
                               d="M32.4778 13.1774C32.1993 12.8988 31.8685 12.6778 31.5045 12.527C31.1405 12.3762 30.7504 12.2986 30.3563 12.2986C29.9623 12.2986 29.5722 12.3762 29.2082 12.527C28.8442 12.6778 28.5134 12.8988 28.2348 13.1774L26.7018 14.7104C26.1433 14.442 25.5152 14.3537 24.9043 14.4578C24.2934 14.5618 23.7299 14.8532 23.2918 15.2914L22.5788 16.0054C22.393 16.1912 22.2456 16.4117 22.1451 16.6544C22.0445 16.8971 21.9928 17.1572 21.9928 17.4199C21.9928 17.6827 22.0445 17.9428 22.1451 18.1855C22.2456 18.4282 22.393 18.6487 22.5788 18.8344L16.0928 25.3194C15.8143 25.5982 15.5934 25.929 15.4428 26.2931C15.2921 26.6572 15.2147 27.0474 15.2148 27.4414V29.2414C15.2148 29.5597 15.3413 29.8649 15.5663 30.09C15.7914 30.315 16.0966 30.4414 16.4148 30.4414H18.2148C19.0102 30.4407 19.7728 30.1242 20.3348 29.5614L26.8208 23.0774C27.0066 23.2632 27.2271 23.4106 27.4698 23.5112C27.7125 23.6118 27.9726 23.6635 28.2353 23.6635C28.4981 23.6635 28.7582 23.6118 29.0009 23.5112C29.2436 23.4106 29.4641 23.2632 29.6498 23.0774L30.3638 22.3624C30.8021 21.9243 31.0934 21.3609 31.1975 20.75C31.3016 20.1391 31.2133 19.511 30.9448 18.9524L32.4778 17.4204C32.7565 17.1419 32.9775 16.8111 33.1283 16.4471C33.2791 16.0831 33.3567 15.693 33.3567 15.2989C33.3567 14.9049 33.2791 14.5148 33.1283 14.1508C32.9775 13.7868 32.7565 13.456 32.4778 13.1774ZM17.5078 26.7344L23.9928 20.2484L25.4068 21.6624L18.9218 28.1484C18.7344 28.336 18.48 28.4414 18.2148 28.4414H17.2148V27.4414C17.2149 27.1762 17.3203 26.9219 17.5078 26.7344Z"
                               fill="black"
                             />
@@ -147,10 +197,10 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                               width="48"
                               height="48"
                               filterUnits="userSpaceOnUse"
-                              color-interpolation-filters="sRGB"
+                              colorInterpolationFilters="sRGB"
                             >
                               <feFlood
-                                flood-opacity="0"
+                                floodOpacity="0"
                                 result="BackgroundImageFix"
                               />
                               <feColorMatrix
@@ -203,46 +253,62 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                 <div className="mb-4">
                   <label className="block text-gray-700">Select Campaign</label>
                   <select
-                    {...register("campaign")}
+                    {...register("campaign", {
+                      required: "Campaign selection is required",
+                    })}
                     className="w-full border rounded-md p-2"
                   >
-                    <option>Select</option>
+                    <option value="">Select</option>
+                    <option value="campaign1">Campaign 1</option>
+                    <option value="campaign2">Campaign 2</option>
                   </select>
+                  {errors.campaign && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.campaign.message}
+                    </p>
+                  )}
                 </div>
-                <div className="mb-4  ">
+                <div className="mb-4">
                   <div className="flex justify-between items-center ">
                     <div className="flex justify-between space-x-1 w-full">
-                      <div className="flex w-1/2  flex-col">
+                      <div className="flex w-1/2 flex-col">
                         <label className="text-sm font-medium text-gray-700 mb-1">
                           Start Time
                         </label>
                         <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
                           <input
-                            {...register("startTime", { required: true })}
-                            placeholder="New Task"
+                            {...register("startTime", {
+                              required: "Start time is required",
+                            })}
                             type="time"
                             className="text-gray-700 w-full focus:outline-none"
                           />
-                          {/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.5 4H7C4.79086 4 3 5.79086 3 8M7.5 4V2M7.5 4H16.5M16.5 4H17C19.2091 4 21 5.79086 21 8M16.5 4V2M3 8V17C3 19.2091 4.79086 21 7 21H17C19.2091 21 21 19.2091 21 17V8M3 8H21" stroke="#4A4A4A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg> */}
                         </div>
+                        {errors.startTime && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.startTime.message}
+                          </p>
+                        )}
                       </div>
-                      <div className="flex w-1/2  flex-col">
+
+                      <div className="flex w-1/2 flex-col">
                         <label className="text-sm font-medium text-gray-700 mb-1">
                           End Time
                         </label>
                         <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
                           <input
-                            {...register("endTime", { required: true })}
-                            placeholder="End Time"
+                            {...register("endTime", {
+                              required: "End time is required",
+                            })}
                             type="time"
                             className="text-gray-700 w-full focus:outline-none"
                           />
-                          {/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.5 4H7C4.79086 4 3 5.79086 3 8M7.5 4V2M7.5 4H16.5M16.5 4H17C19.2091 4 21 5.79086 21 8M16.5 4V2M3 8V17C3 19.2091 4.79086 21 7 21H17C19.2091 21 21 19.2091 21 17V8M3 8H21" stroke="#4A4A4A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg> */}
                         </div>
+                        {errors.endTime && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors.endTime.message}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -256,6 +322,7 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                       name="select"
                       className="mr-2"
                       checked
+                      onChange={() => {}}
                     />
                     <label htmlFor="individual" className="mr-4 ">
                       Individual
@@ -271,21 +338,44 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                 </div>
                 <div className="mb-4">
                   <label className="block text-gray-700">Member</label>
-                  <select className="w-full border rounded-md p-2">
-                    <option>Cyrusophioto</option>
-                    <option>Jacob</option>
-                    <option>Ali</option>
-                    <option>Abdullah</option>
+                  <select
+                    {...register("member", {
+                      required: "Member is required",
+                    })}
+                    className="w-full border rounded-md p-2"
+                  >
+                    <option value="">Select a member</option>
+                    <option value="Cyrusophioto">Cyrusophioto</option>
+                    <option value="Jacob">Jacob</option>
+                    <option value="Ali">Ali</option>
+                    <option value="Abdullah">Abdullah</option>
                   </select>
+                  {errors.member && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.member.message}
+                    </p>
+                  )}
                 </div>
+
                 <div className="mb-4">
                   <label className="block text-gray-700">Description</label>
                   <textarea
-                    {...register("description")}
+                    {...register("description", {
+                      required: "Description is required",
+                      maxLength: {
+                        value: 200,
+                        message: "Description cannot exceed 200 characters",
+                      },
+                    })}
                     className="w-full border rounded-md p-2"
                     rows="4"
                     placeholder="Tag for recently onboarded partners."
                   ></textarea>
+                  {errors.description && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.description.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="flex w-full justify-end items-center gap-x-2 py-3 px-4  dark:border-neutral-700">

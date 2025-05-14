@@ -19,13 +19,13 @@ export default function CreateCommissionPage() {
 
   const onSubmit = async (data) => {
     try {
-      const response  = await addCommission(data).unwrap();
+      const response = await addCommission(data).unwrap();
       reset();
       toast.success(response?.message || "Commission Added Successfully");
       router.push("/dashboard/commissions");
     } catch (err) {
       console.error("Failed to create commission:", err);
-      toast.error(err?.message || "Failed To Add Commission")
+      toast.error(err?.message || "Failed To Add Commission");
     }
   };
 
@@ -87,31 +87,7 @@ export default function CreateCommissionPage() {
                 <option value="percentage">Percentage</option>
               </select>
               {errors.type && (
-                <p className="text-red-500 text-sm">
-                  {errors.type.message}
-                </p>
-              )}
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-sm text-gray-700">
-                Commission Continuity
-              </label>
-              <select
-                {...register("commissionContinuity", {
-                  required: "Select continuity",
-                })}
-                className="border border-gray-300 px-4 py-2 rounded-md"
-              >
-                <option value="">Select</option>
-                <option value="continuity1">Continuity 1</option>
-                <option value="continuity2">Continuity 2</option>
-                <option value="continuity3">Continuity 3</option>
-              </select>
-              {errors.commissionContinuity && (
-                <p className="text-red-500 text-sm">
-                  {errors.commissionContinuity.message}
-                </p>
+                <p className="text-red-500 text-sm">{errors.type.message}</p>
               )}
             </div>
           </div>
@@ -167,56 +143,6 @@ export default function CreateCommissionPage() {
             ))}
           </div>
 
-          {/* Discount Type */}
-          {/* <div className="grid grid-cols-2 gap-4 mt-4">
-            <div className="flex flex-col">
-              <label className="text-sm text-gray-700">Discount Type</label>
-              <select
-                {...register("discountType", {
-                  required: "Select discount type",
-                })}
-                className="border border-gray-300 px-4 py-2 rounded-md"
-              >
-                <option value="">Select</option>
-                <option value="type1">Type 1</option>
-                <option value="type2">Type 2</option>
-                <option value="type3">Type 3</option>
-              </select>
-              {errors.discountType && (
-                <p className="text-red-500 text-sm">
-                  {errors.discountType.message}
-                </p>
-              )}
-            </div>
-          </div> */}
-
-          {/* Tier Discounts */}
-          {/* <div className="grid grid-cols-2 gap-4 mt-4">
-            {["firstTierDiscount", "secondTierDiscount"].map((field, i) => (
-              <div key={field} className="flex flex-col">
-                <label className="text-sm text-gray-700">
-                  {i === 0 ? "First Tier Discount" : "Second Tier Discount"}
-                </label>
-                <input
-                  type="number"
-                  placeholder="Enter percentage"
-                  {...register(field, {
-                    required: "This field is required",
-                    min: { value: 0, message: "Must be at least 0%" },
-                    max: { value: 100, message: "Cannot exceed 100%" },
-                  })}
-                  className="border border-gray-300 px-4 py-2 rounded-md"
-                />
-                {errors[field] && (
-                  <p className="text-red-500 text-sm">
-                    {errors[field]?.message}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div> */}
-
-          {/* Payment Processor & Thresholds */}
           <div className="grid grid-cols-2 gap-4 mt-4">
             <div className="flex flex-col">
               <label className="text-sm text-gray-700">Payment Processor</label>
@@ -226,10 +152,18 @@ export default function CreateCommissionPage() {
                 })}
                 className="border border-gray-300 px-4 py-2 rounded-md"
               >
-                <option value="">Select</option>
-                <option value="type1">Type 1</option>
-                <option value="type2">Type 2</option>
-                <option value="type3">Type 3</option>
+                <option value="" style={{ color: "black" }}>
+                  Select
+                </option>
+                <option value="type1" style={{ color: "black" }}>
+                  Type 1
+                </option>
+                <option value="type2" style={{ color: "black" }}>
+                  Type 2
+                </option>
+                <option value="type3" style={{ color: "black" }}>
+                  Type 3
+                </option>
               </select>
               {errors.paymentProcessor && (
                 <p className="text-red-500 text-sm">
@@ -237,27 +171,6 @@ export default function CreateCommissionPage() {
                 </p>
               )}
             </div>
-
-            {/* <div className="flex flex-col">
-              <label className="text-sm text-gray-700">
-                Minimum Threshold (%)
-              </label>
-              <input
-                type="number"
-                placeholder="20%"
-                {...register("minimumThreshold", {
-                  required: "Enter a threshold",
-                  min: { value: 0, message: "Must be at least 0%" },
-                  max: { value: 100, message: "Cannot exceed 100%" },
-                })}
-                className="border border-gray-300 px-4 py-2 rounded-md"
-              />
-              {errors.minimumThreshold && (
-                <p className="text-red-500 text-sm">
-                  {errors.minimumThreshold.message}
-                </p>
-              )}
-            </div> */}
           </div>
 
           {/* Submit/Cancel */}
