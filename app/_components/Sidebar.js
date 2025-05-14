@@ -41,13 +41,18 @@ const Sidebar = () => {
         name: "Dashboard",
         icon: <FaHome />,
         path: "/dashboard",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+        roles: [
+          ROLES.SUPER_ADMIN,
+          ROLES.ADMIN,
+          ROLES.TEAM_MEMBER,
+          ROLES.PARTNER,
+        ],
       },
       {
         name: "Partners",
         icon: <FaUsers />,
         path: "/dashboard/partners",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.TEAM_MEMBER],
       },
       {
         name: "Commissions",
@@ -59,7 +64,12 @@ const Sidebar = () => {
         name: "Campaign",
         icon: <FaBullhorn />,
         path: "/dashboard/campaigns",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+        roles: [
+          ROLES.SUPER_ADMIN,
+          ROLES.ADMIN,
+          ROLES.PARTNER,
+          ROLES.TEAM_MEMBER,
+        ],
       },
       {
         name: "Team Members",
@@ -77,43 +87,72 @@ const Sidebar = () => {
         name: "Tags",
         icon: <FaTag />,
         path: "/dashboard/tags",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
+        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.TEAM_MEMBER],
       },
       {
         name: "Calendar",
         icon: <FaCalendarAlt />,
         path: "/dashboard/calender",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+        roles: [
+          ROLES.SUPER_ADMIN,
+          ROLES.ADMIN,
+          ROLES.TEAM_MEMBER,
+          ROLES.PARTNER,
+        ],
       },
       {
         name: "Report & Analytics",
         icon: <FaChartLine />,
         path: "/dashboard/reportandanlytic",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+        roles: [
+          ROLES.SUPER_ADMIN,
+          ROLES.ADMIN,
+          ROLES.TEAM_MEMBER,
+          ROLES.PARTNER,
+        ],
       },
       {
         name: "Payouts",
         icon: <FaWallet />,
         path: "/dashboard/payouts",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+        roles: [
+          ROLES.SUPER_ADMIN,
+          ROLES.ADMIN,
+          ROLES.PARTNER,
+        ],
       },
       {
         name: "Communication",
         icon: <FaComments />,
         path: "/dashboard/communication",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+        roles: [
+          ROLES.SUPER_ADMIN,
+          ROLES.ADMIN,
+          ROLES.TEAM_MEMBER,
+          ROLES.PARTNER,
+        ],
       },
       {
         name: "Settings",
         icon: <FaCogs />,
         path: "/dashboard/settings",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+        roles: [
+          ROLES.SUPER_ADMIN,
+          ROLES.ADMIN,
+          ROLES.TEAM_MEMBER,
+          ROLES.PARTNER,
+        ],
       },
       {
         name: "Logout",
         icon: <FaSignOutAlt />,
         path: "#",
-        roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.PARTNER],
+        roles: [
+          ROLES.SUPER_ADMIN,
+          ROLES.ADMIN,
+          ROLES.TEAM_MEMBER,
+          ROLES.PARTNER,
+        ],
       },
     ],
     []
@@ -183,7 +222,7 @@ const Sidebar = () => {
                     localStorage.clear();
                     toast.success("Logout Successfully");
                     setTimeout(() => {
-                      router.push("/login");
+                      router.push("/");
                     }, 500);
                   }}
                   className="w-full py-2 text-white bg-red-500 rounded-lg shadow-sm hover:bg-red-600"

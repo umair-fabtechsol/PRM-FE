@@ -122,8 +122,8 @@ const Page = () => {
                 <path
                   d="M13.3327 7.5C14.966 7.5 16.4577 8.99238 16.4577 10.8333V13.6468C16.4577 14.2966 16.6476 14.9323 17.0042 15.4756L18.3327 17.5H9.99935C8.1584 17.5 6.66602 16.0076 6.66602 14.1667V12.5M13.3327 7.5V5.83333C13.3327 3.99238 11.8403 2.5 9.99935 2.5H6.87435C5.0334 2.5 3.54102 3.99238 3.54102 5.83333V8.64677C3.54102 9.29663 3.35106 9.93232 2.99451 10.4756L1.66602 12.5H9.99935C11.8403 12.5 13.3327 11.0076 13.3327 9.16667V7.5Z"
                   stroke="#2E2E2E"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
@@ -143,8 +143,8 @@ const Page = () => {
                 <path
                   d="M5.83398 10L14.1673 10M10.0007 14.1667L10.0007 5.83337"
                   stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>

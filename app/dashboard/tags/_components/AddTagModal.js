@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useAddTagMutation } from "@/app/store/apis/tagApis";
 import CustomLoader from "@/app/loader/CustomLoader";
+import Image from "next/image";
 
 const AddTagModal = ({ isOpen, closeModal }) => {
   const [addTag, { isLoading }] = useAddTagMutation();
@@ -197,10 +198,12 @@ const AddTagModal = ({ isOpen, closeModal }) => {
                   />
 
                   <div className="w-[40px] h-[40px] rounded-full border shadow-sm flex items-center justify-center overflow-hidden">
-                    <img
+                    <Image
                       src="/icons/pencil-icon.png"
                       alt="Edit"
                       className="w-5 h-5 object-contain"
+                      width={40}
+                      height={40}
                     />
                   </div>
                 </div>

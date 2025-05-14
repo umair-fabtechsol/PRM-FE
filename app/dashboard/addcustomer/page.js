@@ -10,7 +10,8 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import CustomLoader from "@/app/loader/CustomLoader";
 import PhoneInput from "react-phone-number-input";
-import 'react-phone-number-input/style.css';
+import "react-phone-number-input/style.css";
+import Image from "next/image";
 
 export default function AddTeamMember() {
   const [image, setImage] = useState(null);
@@ -81,10 +82,12 @@ export default function AddTeamMember() {
             </label>
             <div className="flex items-end">
               <div className="w-24 h-24 rounded-full border border-gray-300 bg-gray-200 overflow-hidden">
-                <img
+                <Image
                   src={image || "/images/image.jpg"}
                   alt="Profile"
                   className="object-cover w-full h-full"
+                  width={150}
+                  height={150}
                 />
               </div>
               <div className="px-6">
@@ -93,10 +96,12 @@ export default function AddTeamMember() {
                   className="cursor-pointer text-gray-600"
                 >
                   <div className="p-2 rounded-full border border-gray-300 bg-white flex items-center justify-center">
-                    <img
+                    <Image
                       src="/icons/export.png"
                       alt="Upload"
                       className="w-4 h-4"
+                      width={40}
+                      height={40}
                     />
                   </div>
                   <input
@@ -114,10 +119,12 @@ export default function AddTeamMember() {
                   onClick={handleImageDelete}
                   className="cursor-pointer p-2 rounded-full border border-gray-300 bg-white flex items-center justify-center"
                 >
-                  <img
+                  <Image
                     src="/icons/delete.png"
                     alt="Delete"
                     className="w-4 h-4"
+                    width={40}
+                    height={40}
                   />
                 </div>
               </div>

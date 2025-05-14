@@ -6,6 +6,7 @@ import TagsTable from "./_components/TagsTable";
 import FeatureModal from "../settings/FeatureModal";
 import { useState } from "react";
 import AddTagModal from "./_components/AddTagModal";
+import Image from "next/image";
 
 export default function TagsPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,11 +25,9 @@ export default function TagsPage() {
               placeholder="Search"
               className="flex-1 outline-none bg-white"
             />
-            <img
-              src="/icons/union.png"
+            <Image src="/icons/union.png"
               alt="Custom Icon"
-              className="w-4 h-4 ml-2"
-            />
+              className="w-4 h-4 ml-2" width={40} height={40} />
           </div>
 
           <div className="flex space-x-4">

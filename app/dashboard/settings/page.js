@@ -11,12 +11,24 @@ import Security from "./Security";
 import Notisfications from "./Notisfications";
 import { BiLink } from "react-icons/bi";
 import Feature from "./Feature";
+import { getUserRole } from "@/app/utils/auth";
+import { ROLES } from "@/app/constants/roles.constant";
 
-const page = () => {
+const Page = () => {
+  const [activeTab, setActiveTab] = useState("General");
+
+  const userRole = getUserRole();
+
   const Array = [
     {
       path: "General",
       label: "General Setting",
+      allowedRoles: [
+        ROLES.SUPER_ADMIN,
+        ROLES.ADMIN,
+        ROLES.TEAM_MEMBER,
+        ROLES.PARTNER,
+      ],
       Icon: (isActive) => (
         <svg
           style={{ fill: isActive && "white" }}
@@ -34,6 +46,7 @@ const page = () => {
     {
       path: "Security",
       label: "Security",
+      allowedRoles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.TEAM_MEMBER, ROLES.PARTNER],
       Icon: (isActive) => (
         <MdLockOutline style={{ fill: isActive && "white" }} />
       ),
@@ -41,6 +54,7 @@ const page = () => {
     {
       path: "Audit Logs",
       label: "Audit Logs",
+      allowedRoles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
       Icon: (isActive) => (
         <svg
           width="16"
@@ -63,6 +77,12 @@ const page = () => {
     {
       path: "Notisfications",
       label: "Notisfications",
+      allowedRoles: [
+        ROLES.SUPER_ADMIN,
+        ROLES.ADMIN,
+        ROLES.TEAM_MEMBER,
+        ROLES.PARTNER,
+      ],
       Icon: (isActive) => (
         <svg
           width="16"
@@ -85,10 +105,11 @@ const page = () => {
     {
       path: "Payment Processors",
       label: "Payment Processors",
+      allowedRoles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
       Icon: (isActive) => (
         <BiLink
-          size={16} // Icon ka size
-          color={isActive ? "white" : "#2E2E2E"} // Active state ka color
+          size={16}
+          color={isActive ? "white" : "#2E2E2E"} 
         />
       ),
     },
@@ -96,6 +117,7 @@ const page = () => {
     {
       path: "Billing",
       label: "Billing",
+      allowedRoles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
       Icon: (isActive) => (
         <svg
           style={{ fill: isActive && "white" }}
@@ -118,6 +140,12 @@ const page = () => {
     {
       path: "Customizations",
       label: "Customizations",
+      allowedRoles: [
+        ROLES.SUPER_ADMIN,
+        ROLES.ADMIN,
+        ROLES.TEAM_MEMBER,
+        ROLES.PARTNER,
+      ],
       Icon: (isActive) => (
         <svg
           style={{ fill: isActive && "white" }}
@@ -140,6 +168,12 @@ const page = () => {
     {
       path: "Integrations",
       label: "Integrations",
+      allowedRoles: [
+        ROLES.SUPER_ADMIN,
+        ROLES.ADMIN,
+        ROLES.TEAM_MEMBER,
+        ROLES.PARTNER,
+      ],
       Icon: (isActive) => (
         <svg
           style={{ fill: isActive && "white" }}
@@ -162,6 +196,7 @@ const page = () => {
     {
       path: "Feature",
       label: "Feature",
+      allowedRoles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
       Icon: (isActive) => (
         <svg
           style={{ fill: isActive && "white" }}
@@ -183,7 +218,6 @@ const page = () => {
     },
   ];
 
-  const [activeTab, setActiveTab] = useState("General");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -195,30 +229,37 @@ const page = () => {
         <div className=" w-1/4 ">
           <div className="flex  flex-wrap ">
             <ul className="mt-4 space-y-2">
-              {Array.map((item, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleTabClick(item.path)}
-                  className={` cursor-pointer rounded-lg px-4 py-1 ${
-                    activeTab === item.path
-                      ? "bg-[#3366cc] text-white"
-                      : "bg-transparent text-[#2E2E2E]"
-                  } flex items-center space-x-2`}
-                >
-                  {item.Icon(activeTab === item.path)}
-                  <span>{item.label}</span>
-                </li>
-              ))}
+              {Array.filter((item) => item.allowedRoles.includes(userRole)).map(
+                (item, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleTabClick(item.path)}
+                    className={`cursor-pointer rounded-lg px-4 py-1 ${
+                      activeTab === item.path
+                        ? "bg-[#3366cc] text-white"
+                        : "bg-transparent text-[#2E2E2E]"
+                    } flex items-center space-x-2`}
+                  >
+                    {item.Icon(activeTab === item.path)}
+                    <span>{item.label}</span>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </div>
         <div className="ms-3 w-4/5 ">
           {activeTab === "General" && <Generaltab />}
           {activeTab === "Security" && <Security />}
-          {activeTab === "Audit Logs" && <AuditLogsTab />}
+          {activeTab === "Audit Logs" &&
+            ![ROLES.TEAM_MEMBER, ROLES.PARTNER].includes(userRole) && <AuditLogsTab />}
           {activeTab === "Notisfications" && <Notisfications />}
-          {activeTab === "Payment Processors" && <PaymentProcessors />}
-          {activeTab === "Billing" && <Billing />}
+          {activeTab === "Payment Processors" &&
+            ![ROLES.TEAM_MEMBER, ROLES.PARTNER].includes(userRole) && (
+              <PaymentProcessors />
+            )}
+          {activeTab === "Billing" &&
+            ![ROLES.TEAM_MEMBER, ROLES.PARTNER].includes(userRole) && <Billing />}
           {activeTab === "Customizations" && <Coustomizations />}
           {activeTab === "Integrations" && <Integration />}
           {activeTab === "Feature" && <Feature />}
@@ -228,4 +269,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

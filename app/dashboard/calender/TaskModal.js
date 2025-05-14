@@ -57,7 +57,7 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                       height="48"
                       rx="24"
                       fill="#3366CC"
-                      fill-opacity="0.1"
+                      fillOpacity="0.1"
                     />
                     <rect
                       x="4"
@@ -71,7 +71,7 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                     <path
                       d="M23 21.3333H34.6667L30.5 25.5L34.6667 29.6667H23V21.3333Z"
                       fill="#3366CC"
-                      fill-opacity="0.3"
+                      fillOpacity="0.3"
                     />
                     <path
                       d="M23 20.5V35.5M23 21.3333H34.6667L30.5 25.5L34.6667 29.6667H23V21.3333Z"

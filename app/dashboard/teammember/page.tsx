@@ -5,6 +5,7 @@ import { FaSearch, FaPlus } from 'react-icons/fa';
 import Link from 'next/link';
 import { useState } from 'react';
 import TeamMembersTable from './_components/TeamMembersTable';
+import Image from 'next/image';
 
 export default function TeamMemberPage() {
   const [deleteAdminModal, setDeleteAdminModal] = useState(false);
@@ -14,7 +15,7 @@ export default function TeamMemberPage() {
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
           <div className='bg-white w-[350px] rounded-lg p-6 shadow-lg relative'>
             <div className='flex justify-left my-2 text-red-500'>
-              <img src='/icons/deleteicon.png' alt='Add Widget' className='mr-2' width={60} height={60} />
+              <Image src='/icons/deleteicon.png' alt='Add Widget' className='mr-2' width={60} height={60} />
             </div>
 
             <h2 className='text-left p-2 text-lg font-semibold text-black'>Delete Admin</h2>
@@ -44,12 +45,12 @@ export default function TeamMemberPage() {
           <div className='flex items-center border border-gray-300 rounded px-2 py-1 w-full max-w-sm bg-white'>
             <FaSearch className='text-black mr-2' />
             <input type='text' placeholder='Search' className='flex-1 outline-none bg-white' />
-            <img src='/icons/union.png' alt='Custom Icon' className='w-4 h-4 ml-2' />
+            <Image src='/icons/union.png' alt='Custom Icon' className='w-4 h-4 ml-2' width={60} height={60} />
           </div>
 
           <div className='flex space-x-4'>
             <button className='flex items-center text-sm px-4 py-2 bg-white text-gray-700 rounded border shadow hover:shadow-md transition'>
-              <img src='/icons/import.png' alt='Custom Icon' className='w-4 h-4 mr-2' />
+              <Image src='/icons/import.png' alt='Custom Icon' className='w-4 h-4 mr-2' width={60} height={60} />
               Export
             </button>
 
