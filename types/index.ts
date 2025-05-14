@@ -9,3 +9,4 @@ export * from './rolesandpermission.types';
 export * from './auditlogs.types';
 export * from './billing.types';
 export * from './feature.types';
+export * from "./account.types";
