@@ -15,7 +15,15 @@ export const partnerApis = baseApi.injectEndpoints({
       query: () => "/partner",
       providesTags: ["Partner"],
     }),
+
+    deletePartner: builder.mutation<any, { partnerId: string }>({
+      query: ({ partnerId }) => ({
+        url: `partner/${partnerId}/disconnect-acount`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Partner"],
+    }),
   }),
 });
 
-export const { useAddPartnerMutation, useGetPartnerListQuery } = partnerApis;
+export const { useAddPartnerMutation, useGetPartnerListQuery, useDeletePartnerMutation } = partnerApis;

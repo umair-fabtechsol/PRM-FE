@@ -60,7 +60,7 @@ export default function CampaignsTable() {
           <div className="relative flex items-center">
             {users.slice(0, maxVisible).map((user, index) => (
               <Image  key={user.id}
-                src="/images/image.jpg"
+                src="/images/avatar.png"
                 width={40}
                 height={40}
                 alt={user.name}

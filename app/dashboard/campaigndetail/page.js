@@ -101,35 +101,35 @@ export default function CampaignDetailPage() {
           <p className="text-black py-2  text-sm">Assests</p>
           <div className="flex space-x-1">
             <Image
-              src="/images/image.jpg"
+              src="/images/avatar.png"
               alt="Asset"
               className="w-16 h-16"
               width={40}
               height={40}
             />
             <Image
-              src="/images/image.jpg"
+              src="/images/avatar.png"
               alt="Asset"
               className="w-16 h-16"
               width={40}
               height={40}
             />
             <Image
-              src="/images/image.jpg"
+              src="/images/avatar.png"
               alt="Asset"
               className="w-16 h-16"
               width={40}
               height={40}
             />{" "}
             <Image
-              src="/images/image.jpg"
+              src="/images/avatar.png"
               alt="Asset"
               className="w-16 h-16"
               width={40}
               height={40}
             />{" "}
             <Image
-              src="/images/image.jpg"
+              src="/images/avatar.png"
               alt="Asset"
               className="w-16 h-16"
               width={40}
@@ -144,7 +144,7 @@ export default function CampaignDetailPage() {
             {visibleUsers.map((user) => (
               <Image
                 key={user.id}
-                src="/images/image.jpg"
+                src="/images/avatar.png"
                 alt={user.name}
                 className="w-7 h-7 rounded-full border-2 border-white"
                 width={40}
@@ -165,7 +165,7 @@ export default function CampaignDetailPage() {
             {visibleUsers.map((user) => (
               <Image
                 key={user.id}
-                src="/images/image.jpg"
+                src="/images/avatar.png"
                 alt={user.name}
                 className="w-7 h-7 rounded-full border-2 border-white"
                 width={40}

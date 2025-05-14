@@ -70,9 +70,9 @@ const Generaltab = ({ activetab }) => {
                   Profile picture
                 </label>
                 <div className="relative">
-                  <Image  src="/Profile Picture.png"
+                  <Image  src="/images/avatar.png"
                     alt="Profile picture of a person in a suit"
-                    className="w-48 h-48 rounded-full object-cover" width={40} height={40} />
+                    className="w-48 h-48 rounded-full object-cover" width={140} height={140} />
                   <button className="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-md">
                     <i className="fas fa-pen"></i>
                   </button>

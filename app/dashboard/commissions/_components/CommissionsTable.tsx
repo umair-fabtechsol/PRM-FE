@@ -2,7 +2,6 @@ import Table from "@/app/_components/ui/Table";
 import Image from "next/image.js";
 import React, { useEffect } from "react";
 import { CommissionType } from "@/types";
-import { COMMISSION_LIST } from "@/dummy-data";
 import { useGetCommissionListQuery } from "@/app/store/apis/commissionApis";
 import { useDispatch, useSelector } from "react-redux";
 import { addCommission } from "@/app/store/slices/commissionSlice";
@@ -32,10 +31,9 @@ export default function CommissionsTable() {
       { key: "description" as keyof CommissionType, header: "Description" },
       { key: "type" as keyof CommissionType, header: "Commission Type" },
       { key: "processors" as keyof CommissionType, header: "payout frequency" },
-      // { key: "tiers" as keyof CommissionType, header: "payment processor" },
       {
         key: "actions" as keyof CommissionType,
-        header: "",
+        header: "Actions",
         render: () => (
           <div className="flex space-x-2">
             <button className="text-gray-700 hover:text-blue-700">
@@ -75,7 +73,6 @@ export default function CommissionsTable() {
         <Table
           columns={columns}
           data={commissions}
-          // TODO: create reusable pagination and use that
           bottomContent={
             <div className="flex justify-between items-center w-full">
               <div className="flex space-x-4 items-center">

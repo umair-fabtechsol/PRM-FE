@@ -226,15 +226,13 @@ export default function CommunicationPage() {
           }}
         >
           <h1 className="text-black px-2 pt-2  font-bold">Messages</h1>
-          <div className="py-2">
-            <div className="relative bg-transparent border-b rounded-lg">
-              <input
-                type="text"
-                placeholder="search here...."
-                className="w-full p-2 pl-10 pr-10 border rounded-lg outline-none"
-              />
-              <FaSearch className="absolute right-8 top-1/2 transform -translate-y-1/2 text-gray-500" />
-            </div>
+          <div className="flex items-center border border-gray-300 rounded px-2 py-1 mt-2 w-full max-w-sm bg-white">
+            <FaSearch className="text-gray-500 mr-2" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="flex-1 outline-none bg-white text-gray-600 "
+            />
           </div>
 
           {dummyUsers.map((user, index) => (
@@ -248,7 +246,7 @@ export default function CommunicationPage() {
               onClick={() => setSelectedUserId(user.id)}
             >
               <Image
-                src="/images/image.jpg"
+                src="/images/avatar.png"
                 alt={user.name}
                 className="w-12 h-12 rounded-full mr-4"
                 width={40}
@@ -281,7 +279,7 @@ export default function CommunicationPage() {
               <>
                 <div className="flex items-center">
                   <Image
-                    src="/images/image.jpg"
+                    src="/images/avatar.png"
                     alt={selectedUser.name}
                     className="w-10 h-10 rounded-full mr-4"
                     width={40}

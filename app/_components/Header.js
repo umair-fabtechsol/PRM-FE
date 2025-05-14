@@ -57,7 +57,7 @@ const Header = ({ title, description }) => {
 
         <button className="p-0 rounded-full">
           <Image
-            src="/images/image.jpg"
+            src="/images/avatar.png"
             alt="User"
             width={40}
             height={40}

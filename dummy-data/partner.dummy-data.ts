@@ -8,6 +8,6 @@ export const PARTNERS_LIST: PartnerType[] = Array.from({ length: 5 }, (_, index)
   company: `Tech Company ${index}`,
   type: index % 2 === 0 ? 'Partner' : 'Customer',
   tags: index % 3 === 0 ? 'Red' : index % 3 === 1 ? 'Blue' : 'Green',
-  imageUrl: '/images/image.jpg',
+  imageUrl: '/images/avatar.png',
   userName:"user"
 }));
