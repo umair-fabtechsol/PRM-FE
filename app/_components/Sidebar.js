@@ -178,7 +178,7 @@ const Sidebar = () => {
     <PrivateRoute>
       {logoutOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[10000]"
           style={{ pointerEvents: "auto" }}
         >
           <div className="bg-white w-[350px] rounded-lg p-6 shadow-lg relative">
@@ -195,8 +195,7 @@ const Sidebar = () => {
             <h2 className="text-left p-2 text-lg font-bold text-black">
               Logout
             </h2>
-
-            <p className="text-left  text-sm text-gray-500 mt-2">
+            <p className="text-left text-sm text-gray-500 mt-2">
               Are you sure you want to log out?
             </p>
 
