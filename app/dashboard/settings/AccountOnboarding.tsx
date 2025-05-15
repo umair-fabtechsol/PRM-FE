@@ -5,6 +5,9 @@ import AccountTable from "./_components/AccountTable";
 import { toast } from "react-toastify";
 import { useCreateClientSecretForPaymentMutation } from "@/app/store/apis/accountOnboardingApis";
 import CustomLoader from "@/app/loader/CustomLoader";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHER_KEY);
 
 const AccountOnboarding = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,14 +24,52 @@ const AccountOnboarding = () => {
       const stripeCustomerId = userData?.stripeCustomerId;
 
       if (!stripeCustomerId) {
-        toast.error("Customer ID not found in local storage.");
+        toast.error("Customer ID not found.");
+        return;
+      }
+
+      const stripe = await stripePromise;
+
+      if (!stripe) {
+        toast.error("Stripe failed to initialize.");
         return;
       }
 
       const response = await createClientSecretForPayment({
         customerId: stripeCustomerId,
       }).unwrap();
-      console.log("==============>response", response)
+
+      const { clientSecret } = response;
+
+      const payment_method_data = {
+        billing_details: {
+          name: userData?.userName,
+          email: userData?.email,
+        },
+      };
+
+      const params = {
+        payment_method_type: "us_bank_account",
+        payment_method_data,
+      };
+
+      const result = await stripe.collectBankAccountForSetup({
+        clientSecret,
+        params,
+      });
+
+      if (result?.error) {
+        toast.error(`Bank connection failed: ${result.error.message}`);
+        return;
+      }
+
+      const confirmation = await stripe.confirmUsBankAccountSetup(clientSecret);
+
+      if (confirmation.error) {
+        toast.error(`Confirmation failed: ${confirmation.error.message}`);
+        return;
+      }
+
       toast.success("Client secret created successfully!", stripeCustomerId);
     } catch (error) {
       console.error("Error creating client secret:", error);
