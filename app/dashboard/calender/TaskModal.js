@@ -17,7 +17,6 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
 
   const onSubmit = async (data) => {
     try {
-      console.log("===========>data :", data);
 
       const currentDate = new Date();
       const year = currentDate.getFullYear();
@@ -33,9 +32,9 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
 
       setTaskModalData(taskData);
 
-      // const response = await createTask(taskData).unwrap();
+      const response = await createTask(taskData).unwrap();
 
-      // toast.success(response?.message || "Task Created Successfully.");
+      toast.success(response?.message || "Task Created Successfully.");
 
       reset();
 
@@ -125,16 +124,16 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                   <div className="flex items-center">
                     <div className="flex flex-col">
                       <input
-                        {...register("taskName", {
+                        {...register("title", {
                           required: "Task name is required",
                         })}
                         type="text"
                         className="flex-grow border rounded-md p-2"
                         placeholder="New Task"
                       />
-                      {errors.taskName && (
+                      {errors.title && (
                         <p className="text-red-500 text-sm mt-1">
-                          {errors.taskName.message}
+                          {errors.title.message}
                         </p>
                       )}
                     </div>
@@ -253,14 +252,13 @@ const TaskModal = ({ isOpen, closeModal, setTaskModalData }) => {
                 <div className="mb-4">
                   <label className="block text-gray-700">Select Campaign</label>
                   <select
-                    {...register("campaign", {
+                    {...register("campaignId", {
                       required: "Campaign selection is required",
                     })}
                     className="w-full border rounded-md p-2"
                   >
                     <option value="">Select</option>
-                    <option value="campaign1">Campaign 1</option>
-                    <option value="campaign2">Campaign 2</option>
+                    <option value="68217d61a7b7ce2aa99bb4a6">Campaign Name</option>
                   </select>
                   {errors.campaign && (
                     <p className="text-red-500 text-sm mt-1">

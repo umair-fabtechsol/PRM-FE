@@ -3,10 +3,10 @@ import baseApi from "./baseApi";
 export const calendarApis = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     createTask: builder.mutation({
-      query: (payload) => ({
-        url: "partner",
+      query: ({ campaignId, ...taskData }) => ({
+        url: `task/campaigns/${campaignId}/tasks`,
         method: "POST",
-        body: payload,
+        body: taskData,
       }),
       invalidatesTags: ["Tasks"],
     }),

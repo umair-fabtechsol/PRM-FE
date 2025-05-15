@@ -21,7 +21,8 @@ export const baseApi = createApi({
     "Commission",
     "Customer",
     "Tasks",
-    "Account"
+    "Account",
+    "Campaign",
   ],
   endpoints: () => ({}),
 });

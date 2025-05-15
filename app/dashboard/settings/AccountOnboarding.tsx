@@ -66,11 +66,11 @@ const AccountOnboarding = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            Create Client Secret
+            Add New bank
           </button>
 
           {/* Add Bank Button */}
-          <button
+          {/* <button
             onClick={openModal}
             className="bg-[#3366CC] flex gap-3 justify-center items-center px-4 py-2 rounded-lg font-Inter font-semibold text-sm text-[#FFFFFF]"
           >
@@ -90,7 +90,7 @@ const AccountOnboarding = () => {
               />
             </svg>
             Add New Bank
-          </button>
+          </button> */}
         </div>
 
         <section className="container px-4 mx-auto">
